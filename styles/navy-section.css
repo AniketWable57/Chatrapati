@@ -1,0 +1,205 @@
+.navy-section {
+  padding: 5rem 1rem;
+  background-color: var(--background);
+}
+
+@media (min-width: 768px) {
+  .navy-section {
+    padding: 8rem 1rem;
+  }
+}
+
+.navy-content {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+@media (min-width: 640px) {
+  .navy-content {
+    padding: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .navy-content {
+    padding: 2rem;
+  }
+}
+
+.navy-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.navy-subtitle {
+  color: var(--secondary);
+  font-family: "Playfair Display", serif;
+  font-size: 1.125rem;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+}
+
+.navy-title {
+  font-size: clamp(1.5rem, 4vw, 3.125rem);
+  font-family: "Playfair Display", serif;
+  font-weight: bold;
+  color: var(--primary);
+}
+
+.navy-description {
+  font-size: 1.125rem;
+  color: rgba(47, 27, 10, 0.7);
+  max-width: 56rem;
+  margin: 1rem auto 0;
+}
+
+.navy-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-bottom: 5rem;
+}
+
+@media (min-width: 768px) {
+  .navy-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.navy-card {
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  border-top: 4px solid var(--primary);
+  transition: all 0.3s ease;
+}
+
+.navy-card:hover {
+  transform: translateY(-2rem);
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(212, 175, 55, 0.05) 100%);
+  box-shadow: 0 8px 24px rgba(212, 175, 55, 0.2);
+}
+
+.navy-icon {
+  width: 3rem;
+  height: 3rem;
+  color: var(--primary);
+  margin: 0 auto 1rem;
+}
+
+.navy-card-title {
+  font-size: 1.5rem;
+  font-family: "Playfair Display", serif;
+  font-weight: bold;
+  color: var(--primary);
+  margin-bottom: 0.75rem;
+}
+
+.navy-card-text {
+  color: rgba(47, 27, 10, 0.7);
+  line-height: 1.8;
+}
+
+.navy-stats {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-bottom: 5rem;
+}
+
+@media (min-width: 640px) {
+  .navy-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .navy-stats {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.stat-box {
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  text-align: center;
+}
+
+.stat-number {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--secondary);
+  margin-bottom: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .stat-number {
+    font-size: 2.25rem;
+  }
+}
+
+.stat-label {
+  font-family: "Playfair Display", serif;
+  color: rgba(47, 27, 10, 0.7);
+}
+
+.navy-ports-title {
+  font-size: 2rem;
+  font-family: "Playfair Display", serif;
+  font-weight: bold;
+  color: var(--primary);
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.navy-ports-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .navy-ports-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .navy-ports-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.navy-port-card {
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  border-left: 4px solid var(--secondary);
+  transition: all 0.3s ease;
+}
+
+.navy-port-card:hover {
+  transform: translateX(0.5rem);
+}
+
+.port-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: var(--secondary);
+  margin-bottom: 0.75rem;
+}
+
+.port-name {
+  font-size: 1.25rem;
+  font-family: "Playfair Display", serif;
+  font-weight: bold;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+.port-role {
+  color: rgba(47, 27, 10, 0.7);
+  font-size: 0.875rem;
+}

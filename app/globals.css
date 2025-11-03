@@ -1,26 +1,243 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+
+@import 'tw-animate-css';
+@import "../styles/variables.css";
+@import "../styles/global.css";
+
+@custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fdf5e6;
+  --foreground: #2f1b0a;
+  --card: #f5ecdb;
+  --card-foreground: #2f1b0a;
+  --primary: #8b4513;
+  --primary-foreground: #fdf5e6;
+  --secondary: #d4af37;
+  --secondary-foreground: #2f1b0a;
+  --accent: #8b0000;
+  --accent-foreground: #fdf5e6;
+  --gold: #ffd700;
+  --dark-red: #8b0000;
+  --border: #d4af37;
+  --input: #f5ecdb;
+  --ring: #d4af37;
+  --radius: 0.625rem;
+}
+
+.dark {
+  --background: #2f1b0a;
+  --foreground: #fdf5e6;
+  --card: #3d2817;
+  --card-foreground: #fdf5e6;
+  --primary: #d4af37;
+  --primary-foreground: #2f1b0a;
+  --secondary: #8b4513;
+  --secondary-foreground: #fdf5e6;
+  --accent: #ffd700;
+  --accent-foreground: #2f1b0a;
+  --border: #8b4513;
+  --input: #3d2817;
+  --ring: #d4af37;
 }
 
 @theme inline {
+  /* optional: --font-sans, --font-serif, --font-mono if they are applied in the layout.tsx */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: oklch(0.577 0.245 27.325);
+  --color-destructive-foreground: oklch(0.577 0.245 27.325);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: oklch(0.646 0.222 41.116);
+  --color-chart-2: oklch(0.6 0.118 184.704);
+  --color-chart-3: oklch(0.398 0.07 227.392);
+  --color-chart-4: oklch(0.828 0.189 84.429);
+  --color-chart-5: oklch(0.769 0.188 70.08);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: oklch(0.985 0 0);
+  --color-sidebar-foreground: oklch(0.145 0 0);
+  --color-sidebar-primary: oklch(0.205 0 0);
+  --color-sidebar-primary-foreground: oklch(0.985 0 0);
+  --color-sidebar-accent: oklch(0.97 0 0);
+  --color-sidebar-accent-foreground: oklch(0.205 0 0);
+  --color-sidebar-border: oklch(0.922 0 0);
+  --color-sidebar-ring: oklch(0.708 0 0);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
   }
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border-color: var(--border);
+}
+
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-image: repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 35px,
+      rgba(212, 175, 55, 0.03) 35px,
+      rgba(212, 175, 55, 0.03) 70px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 35px,
+      rgba(212, 175, 55, 0.03) 35px,
+      rgba(212, 175, 55, 0.03) 70px
+    );
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Playfair Display", serif;
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw, 3.75rem);
+  font-weight: bold;
+}
+
+h2 {
+  font-size: clamp(1.5rem, 4vw, 3.125rem);
+  font-weight: bold;
+}
+
+h3 {
+  font-size: clamp(1.25rem, 3vw, 1.875rem);
+  font-weight: bold;
+}
+
+/* Gold accent border pattern */
+.gold-border {
+  border: 2px solid var(--gold);
+  box-shadow: inset 0 0 10px rgba(212, 175, 55, 0.1);
+}
+
+.gold-border-top {
+  border-top: 3px solid var(--gold);
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.15);
+}
+
+/* Jali work pattern - lattice background */
+.jali-pattern {
+  position: relative;
+  background-color: var(--background);
+  background-image: linear-gradient(45deg, var(--gold) 25%, transparent 25%),
+    linear-gradient(-45deg, var(--gold) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, var(--gold) 75%),
+    linear-gradient(-45deg, transparent 75%, var(--gold) 75%);
+  background-size: 20px 20px;
+  background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+  opacity: 0.05;
+}
+
+/* Ornamental divider */
+.ornamental-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.ornamental-divider::before,
+.ornamental-divider::after {
+  flex: 1;
+  height: 1px;
+  content: "";
+}
+
+.ornamental-divider::before {
+  background: linear-gradient(to right, var(--gold), transparent);
+}
+
+.ornamental-divider::after {
+  background: linear-gradient(to right, transparent, var(--gold));
+}
+
+/* Hover effect with gold foil */
+.gold-hover {
+  transition: all 0.3s ease-out;
+}
+
+.gold-hover:hover {
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(212, 175, 55, 0.05) 100%);
+  box-shadow: 0 8px 24px rgba(212, 175, 55, 0.2);
+}
+
+/* Parchment texture */
+.parchment {
+  background: linear-gradient(135deg, #fdf5e6 0%, #f5ecdb 100%);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Animated text with Indian aesthetic */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.shimmer {
+  animation: shimmer 3s infinite;
+  background: linear-gradient(
+    to right,
+    var(--background) 0%,
+    rgba(212, 175, 55, 0.3) 20%,
+    rgba(212, 175, 55, 0.5) 60%,
+    var(--background) 100%
+  );
+  background-size: 1000px 100%;
 }

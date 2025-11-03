@@ -1,0 +1,220 @@
+.military-section {
+  padding: 5rem 1rem;
+  background: linear-gradient(to bottom, var(--background), var(--card));
+}
+
+@media (min-width: 768px) {
+  .military-section {
+    padding: 8rem 1rem;
+  }
+}
+
+.military-content {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+@media (min-width: 640px) {
+  .military-content {
+    padding: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .military-content {
+    padding: 2rem;
+  }
+}
+
+.military-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.military-subtitle {
+  color: var(--secondary);
+  font-family: "Playfair Display", serif;
+  font-size: 1.125rem;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+}
+
+.military-title {
+  font-size: clamp(1.5rem, 4vw, 3.125rem);
+  font-family: "Playfair Display", serif;
+  font-weight: bold;
+  color: var(--primary);
+}
+
+.tactics-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-bottom: 5rem;
+}
+
+@media (min-width: 768px) {
+  .tactics-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.tactic-card {
+  background: linear-gradient(135deg, #fdf5e6 0%, #f5ecdb 100%);
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  border-top: 4px solid var(--accent);
+  transition: all 0.3s ease-out;
+}
+
+.tactic-card:hover {
+  transform: translateY(-2rem);
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(212, 175, 55, 0.05) 100%);
+  box-shadow: 0 8px 24px rgba(212, 175, 55, 0.2);
+}
+
+.tactic-icon {
+  width: 3rem;
+  height: 3rem;
+  color: var(--accent);
+  margin: 0 auto 1rem;
+}
+
+.tactic-title {
+  font-size: 1.5rem;
+  font-family: "Playfair Display", serif;
+  font-weight: bold;
+  color: var(--primary);
+  margin-bottom: 0.75rem;
+}
+
+.tactic-description {
+  color: rgba(47, 27, 10, 0.7);
+  line-height: 1.8;
+}
+
+.army-structure {
+  margin-bottom: 5rem;
+}
+
+.army-title {
+  font-size: 2rem;
+  font-family: "Playfair Display", serif;
+  font-weight: bold;
+  color: var(--primary);
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.army-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .army-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.army-unit {
+  background-color: var(--card);
+  border: 2px solid var(--gold);
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.army-unit:hover {
+  transform: scale(1.05);
+}
+
+.unit-count {
+  font-size: 2.25rem;
+  font-weight: bold;
+  color: var(--secondary);
+  margin-bottom: 0.5rem;
+}
+
+.unit-role {
+  font-family: "Playfair Display", serif;
+  font-weight: bold;
+  color: var(--primary);
+  margin-bottom: 0.25rem;
+}
+
+.unit-description {
+  font-size: 0.875rem;
+  color: rgba(47, 27, 10, 0.6);
+}
+
+.weaponry-section {
+  margin-bottom: 5rem;
+}
+
+.weaponry-title {
+  font-size: 2rem;
+  font-family: "Playfair Display", serif;
+  font-weight: bold;
+  color: var(--primary);
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.weaponry-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .weaponry-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .weaponry-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.weapon-card {
+  background: linear-gradient(135deg, #fdf5e6 0%, #f5ecdb 100%);
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  border-left: 4px solid var(--accent);
+  transition: all 0.3s ease-out;
+}
+
+.weapon-card:hover {
+  transform: translateY(-1rem);
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(212, 175, 55, 0.05) 100%);
+  box-shadow: 0 8px 24px rgba(212, 175, 55, 0.2);
+}
+
+.weapon-type {
+  font-size: 0.875rem;
+  color: var(--secondary);
+  letter-spacing: 0.1em;
+  margin-bottom: 0.5rem;
+}
+
+.weapon-name {
+  font-size: 1.25rem;
+  font-family: "Playfair Display", serif;
+  font-weight: bold;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+.weapon-usage {
+  font-size: 0.875rem;
+  color: rgba(47, 27, 10, 0.7);
+}

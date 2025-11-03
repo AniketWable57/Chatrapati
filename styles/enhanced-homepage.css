@@ -1,0 +1,148 @@
+.enhanced-homepage {
+  padding: 5rem 1rem;
+  background-color: var(--card);
+  border-top: 4px solid var(--gold);
+}
+
+@media (min-width: 768px) {
+  .enhanced-homepage {
+    padding: 8rem 1rem;
+  }
+}
+
+.enhanced-content {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+@media (min-width: 640px) {
+  .enhanced-content {
+    padding: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .enhanced-content {
+    padding: 2rem;
+  }
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.section-subtitle {
+  color: var(--secondary);
+  font-family: "Playfair Display", serif;
+  font-size: 1.125rem;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+}
+
+.section-title {
+  font-size: clamp(1.5rem, 4vw, 3.125rem);
+  font-family: "Playfair Display", serif;
+  font-weight: bold;
+  color: var(--primary);
+}
+
+.sections-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .sections-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .sections-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.section-card {
+  position: relative;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  color: inherit;
+}
+
+.section-card:hover {
+  transform: translateY(-2rem);
+}
+
+.section-card-background {
+  position: absolute;
+  inset: 0;
+  opacity: 0.2;
+  transition: opacity 0.3s ease;
+}
+
+.section-card:hover .section-card-background {
+  opacity: 0.3;
+}
+
+.section-card-pattern {
+  position: absolute;
+  inset: 0;
+  opacity: 0.05;
+}
+
+.section-card-content {
+  position: relative;
+}
+
+.section-card-title {
+  font-size: 1.25rem;
+  font-family: "Playfair Display", serif;
+  font-weight: bold;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+.section-card-description {
+  font-size: 0.875rem;
+  color: rgba(47, 27, 10, 0.7);
+  margin-bottom: 1rem;
+}
+
+.section-card-button {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: rgba(212, 175, 55, 0.2);
+  color: var(--gold);
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.section-card:hover .section-card-button {
+  background-color: var(--gold);
+  color: var(--primary);
+}
+
+.section-card-divider {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(to right, var(--gold), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.section-card:hover .section-card-divider {
+  opacity: 100%;
+}

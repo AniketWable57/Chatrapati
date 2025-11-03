@@ -1,0 +1,204 @@
+.administration-section {
+  padding: 5rem 1rem;
+  background: linear-gradient(to bottom, var(--background), var(--card));
+}
+
+@media (min-width: 768px) {
+  .administration-section {
+    padding: 8rem 1rem;
+  }
+}
+
+.administration-content {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+@media (min-width: 640px) {
+  .administration-content {
+    padding: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .administration-content {
+    padding: 2rem;
+  }
+}
+
+.administration-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.administration-subtitle {
+  color: var(--secondary);
+  font-family: "Playfair Display", serif;
+  font-size: 1.125rem;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+}
+
+.administration-title {
+  font-size: clamp(1.5rem, 4vw, 3.125rem);
+  font-family: "Playfair Display", serif;
+  font-weight: bold;
+  color: var(--primary);
+}
+
+.administration-description {
+  font-size: 1.125rem;
+  color: rgba(47, 27, 10, 0.7);
+  max-width: 56rem;
+  margin: 1rem auto 0;
+}
+
+.admin-intro {
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin-bottom: 5rem;
+  text-align: center;
+}
+
+.admin-intro-text {
+  font-size: 1.125rem;
+  color: rgba(47, 27, 10, 0.8);
+  line-height: 1.8;
+}
+
+.council-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-bottom: 5rem;
+}
+
+@media (min-width: 768px) {
+  .council-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .council-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.minister-card-wrapper {
+  position: relative;
+}
+
+.minister-card-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom right, var(--accent), var(--primary));
+  border-radius: 0.5rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.minister-card-wrapper:hover .minister-card-bg {
+  opacity: 100%;
+}
+
+.minister-card {
+  position: relative;
+  background-color: var(--card);
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  border: 2px solid var(--gold);
+  transition: border-color 0.3s ease;
+}
+
+.minister-card-wrapper:hover .minister-card {
+  border-color: var(--background);
+}
+
+.minister-number {
+  width: 3rem;
+  height: 3rem;
+  background-color: rgba(212, 175, 55, 0.2);
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  font-family: "Playfair Display", serif;
+  font-weight: bold;
+  color: var(--gold);
+}
+
+.minister-position {
+  font-size: 1.25rem;
+  font-family: "Playfair Display", serif;
+  font-weight: bold;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.minister-card-wrapper:hover .minister-position {
+  color: var(--background);
+}
+
+.minister-responsibility {
+  font-size: 0.875rem;
+  color: rgba(47, 27, 10, 0.7);
+  line-height: 1.8;
+  transition: color 0.3s ease;
+}
+
+.minister-card-wrapper:hover .minister-responsibility {
+  color: rgba(253, 245, 230, 0.8);
+}
+
+.admin-features {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .admin-features {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.admin-feature-card {
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  border-top: 4px solid var(--secondary);
+  transition: all 0.3s ease;
+}
+
+.admin-feature-card:hover {
+  transform: translateY(-2rem);
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(212, 175, 55, 0.05) 100%);
+  box-shadow: 0 8px 24px rgba(212, 175, 55, 0.2);
+}
+
+.admin-feature-icon {
+  width: 3rem;
+  height: 3rem;
+  color: var(--secondary);
+  margin: 0 auto 1rem;
+}
+
+.admin-feature-title {
+  font-size: 1.5rem;
+  font-family: "Playfair Display", serif;
+  font-weight: bold;
+  color: var(--primary);
+  margin-bottom: 0.75rem;
+}
+
+.admin-feature-text {
+  color: rgba(47, 27, 10, 0.7);
+  line-height: 1.8;
+}

@@ -1,0 +1,122 @@
+.biography-section {
+  padding: 5rem 1rem;
+  background-color: var(--background);
+}
+
+@media (min-width: 768px) {
+  .biography-section {
+    padding: 8rem 1rem;
+  }
+}
+
+.biography-content {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+@media (min-width: 640px) {
+  .biography-content {
+    padding: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .biography-content {
+    padding: 2rem;
+  }
+}
+
+.biography-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.biography-subtitle {
+  color: var(--secondary);
+  font-family: "Playfair Display", serif;
+  font-size: 1.125rem;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+}
+
+.biography-title {
+  font-size: clamp(1.5rem, 4vw, 3.125rem);
+  font-family: "Playfair Display", serif;
+  font-weight: bold;
+  color: var(--primary);
+  margin-bottom: 1.5rem;
+}
+
+.biography-description {
+  font-size: 1.125rem;
+  color: rgba(47, 27, 10, 0.7);
+  max-width: 56rem;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+.biography-text-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  margin-bottom: 5rem;
+}
+
+@media (min-width: 768px) {
+  .biography-text-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.biography-paragraph {
+  font-size: 1.125rem;
+  color: rgba(47, 27, 10, 0.8);
+  line-height: 1.8;
+}
+
+.biography-paragraph + .biography-paragraph {
+  margin-top: 1rem;
+}
+
+.achievements-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-bottom: 5rem;
+}
+
+@media (min-width: 768px) {
+  .achievements-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.achievement-card {
+  background: linear-gradient(135deg, #fdf5e6 0%, #f5ecdb 100%);
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  border-top: 4px solid var(--gold);
+  transition: all 0.3s ease-out;
+}
+
+.achievement-card:hover {
+  transform: translateY(-2rem);
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(212, 175, 55, 0.05) 100%);
+  box-shadow: 0 8px 24px rgba(212, 175, 55, 0.2);
+}
+
+.achievement-title {
+  font-size: 1.5rem;
+  font-family: "Playfair Display", serif;
+  font-weight: bold;
+  color: var(--primary);
+  margin-bottom: 0.75rem;
+}
+
+.achievement-description {
+  color: rgba(47, 27, 10, 0.7);
+  line-height: 1.8;
+}
