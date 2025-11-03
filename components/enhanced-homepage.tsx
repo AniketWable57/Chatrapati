@@ -10,42 +10,49 @@ export default function EnhancedHomepage() {
       description: "Life timeline and historical journey",
       link: "/biography",
       color: "from-[var(--primary)]",
+      image: "/images/Chatrapati.jpg" // Add image paths
     },
     {
       title: "Forts",
       description: "300+ architectural masterpieces",
       link: "/forts",
       color: "from-[var(--accent)]",
+      image: "/images/fort.jpg"
     },
     {
       title: "Military",
       description: "Military strategy and innovation",
       link: "/military",
       color: "from-[var(--secondary)]",
+      image: "/images/army.jpg"
     },
     {
       title: "Navy",
       description: "Maritime power in Arabian Sea",
       link: "/navy",
       color: "from-[var(--primary)]",
+      image: "/images/navy.webp"
     },
     {
       title: "Administration",
       description: "Governance and council system",
       link: "/administration",
       color: "from-[var(--secondary)]",
+      image: "/images/administration.jpg"
     },
     {
       title: "Culture",
       description: "Art, music, and heritage",
       link: "/culture",
       color: "from-[var(--accent)]",
+      image: "/images/culture.jpg"
     },
     {
       title: "Gallery",
       description: "Historical artifacts and images",
       link: "/gallery",
       color: "from-[var(--primary)]",
+      image: "/images/sord.jpg"
     },
   ]
 
@@ -72,10 +79,12 @@ export default function EnhancedHomepage() {
               transition={{ duration: 0.6, delay: index * 0.05 }}
               whileHover={{ y: -8 }}
               className="section-card"
-              style={{
-                backgroundImage: `linear-gradient(to bottom right, var(--primary), var(--background))`,
-              }}
             >
+              {/* Add image background */}
+              <div 
+                className="section-card-image"
+                style={{ backgroundImage: `url(${section.image})` }}
+              />
               <div
                 className="section-card-background"
                 style={{

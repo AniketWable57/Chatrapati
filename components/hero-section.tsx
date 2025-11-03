@@ -60,23 +60,28 @@ export default function HeroSection() {
             </div>
           </motion.div>
 
-          {/* Decorative Element */}
+          {/* Image Section */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
+            initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="hero-decorative"
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="hero-image-container"
           >
-            <div className="decorative-container">
-              <div className="decorative-circles">
-                <div className="circle-outer" />
-                <div className="circle-middle" />
-                <div className="circle-inner" />
-              </div>
-
-              <div className="decorative-text">
-                <p className="devanagari-text">शिवाजी</p>
-                <p className="devanagari-subtitle">Maratha Pride</p>
+            <div className="image-wrapper">
+              <img 
+                src="/images/Chatrapati_Shivaji_Maharaj.jpg" 
+                alt="Chhatrapati Shivaji Maharaj"
+                className="hero-image"
+              />
+              {/* Decorative Frame */}
+              <div className="image-frame" />
+              
+              {/* Decorative Element Overlay */}
+              <div className="decorative-overlay">
+                <div className="decorative-text">
+                  <p className="devanagari-text">छत्रपती</p>
+                  <p className="devanagari-subtitle">Maratha Pride</p>
+                </div>
               </div>
             </div>
           </motion.div>

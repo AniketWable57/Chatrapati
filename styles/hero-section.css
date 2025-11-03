@@ -45,9 +45,11 @@
 @media (min-width: 768px) {
   .hero-grid {
     grid-template-columns: 1fr 1fr;
+    gap: 4rem;
   }
 }
 
+/* Text Content Styles */
 .hero-text {
   display: flex;
   flex-direction: column;
@@ -65,6 +67,7 @@
   font-family: "Playfair Display", serif;
   font-size: 1.125rem;
   letter-spacing: 0.1em;
+  margin-bottom: 0.5rem;
 }
 
 .hero-title {
@@ -73,6 +76,7 @@
   font-weight: bold;
   color: var(--primary);
   line-height: 1.2;
+  margin: 0;
 }
 
 .hero-title-accent {
@@ -84,13 +88,14 @@
   color: rgba(47, 27, 10, 0.8);
   line-height: 1.8;
   max-width: 28rem;
+  margin: 0;
 }
 
 .hero-stats {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
-  padding-top: 1.5rem;
+  padding-top: 1rem;
 }
 
 .stat-card {
@@ -112,11 +117,15 @@
   font-size: 1.875rem;
   font-weight: bold;
   color: var(--secondary);
+  margin: 0;
+  line-height: 1;
 }
 
 .stat-label {
   font-size: 0.875rem;
   color: rgba(47, 27, 10, 0.6);
+  margin: 0.5rem 0 0 0;
+  line-height: 1.2;
 }
 
 .hero-buttons {
@@ -163,75 +172,85 @@
   background-color: rgba(212, 175, 55, 0.1);
 }
 
-.hero-decorative {
-  display: none;
-}
-
-@media (min-width: 768px) {
-  .hero-decorative {
-    display: block;
-  }
-}
-
-.decorative-container {
-  position: relative;
-  height: 24rem;
+/* Image Section Styles */
+.hero-image-container {
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  height: 100%;
 }
 
-.decorative-circles {
+.image-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.hero-image {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.image-wrapper:hover .hero-image {
+  transform: scale(1.05);
+}
+
+.image-frame {
   position: absolute;
   inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.circle-outer {
-  position: absolute;
-  width: 20rem;
-  height: 20rem;
-  border: 4px solid var(--gold);
-  border-radius: 50%;
-  opacity: 0.2;
-}
-
-.circle-middle {
-  position: absolute;
-  width: 15rem;
-  height: 15rem;
-  border: 2px solid var(--secondary);
-  border-radius: 50%;
+  border: 2px solid var(--gold);
+  border-radius: 1rem;
+  pointer-events: none;
   opacity: 0.3;
 }
 
-.circle-inner {
+.decorative-overlay {
   position: absolute;
-  width: 10rem;
-  height: 10rem;
-  border-radius: 50%;
-  background: linear-gradient(to bottom right, var(--secondary), var(--accent));
-  opacity: 0.1;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+  padding: 2rem 1.5rem 1.5rem;
+  color: white;
 }
 
 .decorative-text {
-  position: relative;
-  z-index: 10;
   text-align: center;
 }
 
 .devanagari-text {
-  font-size: 3.75rem;
+  font-size: 2.5rem;
   font-family: "Playfair Display", serif;
   font-weight: bold;
-  color: var(--primary);
+  color: var(--gold);
+  margin: 0;
+  line-height: 1;
 }
 
 .devanagari-subtitle {
-  font-size: 1.25rem;
-  color: var(--secondary);
-  margin-top: 0.5rem;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0.5rem 0 0 0;
   font-family: "Playfair Display", serif;
+  line-height: 1.2;
+}
+
+/* Remove old decorative styles */
+.hero-decorative {
+  display: none;
+}
+
+.decorative-container,
+.decorative-circles,
+.circle-outer,
+.circle-middle,
+.circle-inner {
+  display: none;
 }

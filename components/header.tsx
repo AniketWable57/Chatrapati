@@ -34,14 +34,12 @@ export default function Header() {
         <div className="header-flex">
           {/* Logo */}
           <Link href="/" className="logo-link">
-            <div className="logo-box">
-              <span className="logo-text">छ</span>
-            </div>
+          
             <div className="logo-title">
               <h1 className="logo-company" style={{ fontSize: "1.25rem" }}>
-                Shivaji Maharaj
+               छत्रपती
               </h1>
-              <p className="logo-company">Maratha Empire</p>
+            
             </div>
           </Link>
 
