@@ -148,3 +148,51 @@
     flex-direction: column;
   }
 }
+
+
+
+/* Add these styles to your existing timeline-section.css */
+
+.timeline-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid #e5e7eb;
+}
+
+.continue-reading-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.continue-reading-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 15px -3px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+}
+
+.continue-reading-btn:active {
+  transform: translateY(0);
+}
+
+/* Update TimelineItem to be clickable */
+.timeline-item {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.timeline-item:hover {
+  transform: translateX(5px);
+}

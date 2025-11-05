@@ -22,24 +22,22 @@ export default function Header() {
     { label: "Gallery", href: "/gallery" },
   ]
 
-  // Debug function
-  const handleNavigation = (href: string, label: string) => {
-    console.log(`Navigating to: ${href} (${label})`)
+  const handleNavigation = (href: string) => {
+    console.log(`Navigating to: ${href}`)
     console.log(`Current path: ${pathname}`)
+    setIsOpen(false)
   }
 
   return (
     <header className="header">
       <nav>
         <div className="header-flex">
-          {/* Logo */}
+          {/* Logo - Now visible on mobile */}
           <Link href="/" className="logo-link">
-          
             <div className="logo-title">
-              <h1 className="logo-company" style={{ fontSize: "1.25rem" }}>
-               छत्रपती
+              <h1 className="logo-company">
+                छत्रपती
               </h1>
-            
             </div>
           </Link>
 
@@ -50,7 +48,7 @@ export default function Header() {
                 key={item.href} 
                 href={item.href} 
                 className="nav-item"
-                onClick={() => handleNavigation(item.href, item.label)}
+                onClick={() => handleNavigation(item.href)}
               >
                 {item.label}
               </Link>
@@ -58,7 +56,11 @@ export default function Header() {
           </div>
 
           {/* Mobile Menu Button */}
-          <button onClick={() => setIsOpen(!isOpen)} className="mobile-menu-btn">
+          <button 
+            onClick={() => setIsOpen(!isOpen)} 
+            className="mobile-menu-btn"
+            aria-label="Toggle menu"
+          >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
@@ -70,10 +72,7 @@ export default function Header() {
               key={item.href} 
               href={item.href} 
               className="mobile-nav-item" 
-              onClick={() => {
-                console.log(`Mobile nav to: ${item.href}`)
-                setIsOpen(false)
-              }}
+              onClick={() => handleNavigation(item.href)}
             >
               {item.label}
             </Link>

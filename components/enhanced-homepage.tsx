@@ -17,7 +17,7 @@ export default function EnhancedHomepage() {
       description: "300+ architectural masterpieces",
       link: "/forts",
       color: "from-[var(--accent)]",
-      image: "/images/fort.jpg"
+      image: "/images/forts/default-fort.jpg"
     },
     {
       title: "Military",
