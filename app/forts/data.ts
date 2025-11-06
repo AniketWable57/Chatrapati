@@ -16,9 +16,18 @@ export const forts = [
     "/images/forts/raigad-fort/raigad-image (6).jpeg",
     "/images/forts/raigad-fort/raigad-image (4).jpeg",
     "/images/forts/raigad-fort/raigad-image (5).jpeg",
-    
-  
-  
+    "/images/forts/raigad-fort/raigad-image (2).jpg",
+    "/images/forts/raigad-fort/raigad-image (3).jpg",
+    "/images/forts/raigad-fort/raigad-image (4).jpg",
+  "/images/forts/raigad-fort/raigad-image (5).jpg",
+  "/images/forts/raigad-fort/raigad-image (6).jpg",
+  "/images/forts/raigad-fort/raigad-image (7).jpg",
+  "/images/forts/raigad-fort/raigad-image (8).jpg",
+  "/images/forts/raigad-fort/raigad-image (9).jpg",
+  "/images/forts/raigad-fort/raigad-image (10).jpg",
+  "/images/forts/raigad-fort/raigad-image (11).jpg",
+  "/images/forts/raigad-fort/raigad-image (12).jpg",
+  "/images/forts/raigad-fort/raigad-image (13).jpg",
   ],
   
   fullHistory: {

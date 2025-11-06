@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion"
 import { useRouter } from "next/navigation"
-import { ArrowLeft, MapPin, Calendar, Users, Shield, Clock, Navigation, Star, X, ChevronLeft, ChevronRight } from "lucide-react"
+import { ArrowLeft, MapPin, Calendar, Users, Shield, Clock, Navigation, Star, X, ChevronLeft, ChevronRight, Grid3X3 } from "lucide-react"
 import { useState } from "react"
 import "../../../styles/forts-details.css"
 
@@ -36,9 +36,14 @@ interface FortDetailsPageProps {
 export default function FortDetailsPage({ fort }: FortDetailsPageProps) {
   const router = useRouter()
   const [selectedImage, setSelectedImage] = useState<number | null>(null)
+  const [showAllImages, setShowAllImages] = useState(false)
   
   // Use the main image plus additional images if available
   const allImages = [fort.image, ...(fort.images || [])]
+  
+  // Show only first 6 images initially, or all if showAllImages is true
+  const displayedImages = showAllImages ? allImages : allImages.slice(0, 6)
+  const hasMoreImages = allImages.length > 6
 
   const nextImage = () => {
     if (selectedImage !== null) {
@@ -54,6 +59,10 @@ export default function FortDetailsPage({ fort }: FortDetailsPageProps) {
 
   const closeModal = () => {
     setSelectedImage(null)
+  }
+
+  const toggleShowAllImages = () => {
+    setShowAllImages(!showAllImages)
   }
 
   return (
@@ -150,9 +159,14 @@ export default function FortDetailsPage({ fort }: FortDetailsPageProps) {
             {/* Image Gallery */}
             {allImages.length > 1 && (
               <div className="info-card">
-                <h3>Gallery</h3>
+                <div className="gallery-header">
+                  <h3>Gallery</h3>
+                  <span className="image-count">
+                    {allImages.length} photos
+                  </span>
+                </div>
                 <div className="image-gallery">
-                  {allImages.map((image, index) => (
+                  {displayedImages.map((image, index) => (
                     <motion.div
                       key={index}
                       initial={{ opacity: 0, scale: 0.8 }}
@@ -167,7 +181,35 @@ export default function FortDetailsPage({ fort }: FortDetailsPageProps) {
                       </div>
                     </motion.div>
                   ))}
+                  
+                  {/* View More Button */}
+                  {hasMoreImages && !showAllImages && (
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      className="view-more-item"
+                      onClick={toggleShowAllImages}
+                    >
+                      <div className="view-more-content">
+                        <Grid3X3 size={24} />
+                        <span>View All</span>
+                        <span className="more-count">+{allImages.length - 6}</span>
+                      </div>
+                    </motion.div>
+                  )}
                 </div>
+                
+                {/* Show Less Button */}
+                {showAllImages && hasMoreImages && (
+                  <motion.button
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    className="show-less-button"
+                    onClick={toggleShowAllImages}
+                  >
+                    Show Less
+                  </motion.button>
+                )}
               </div>
             )}
 

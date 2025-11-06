@@ -605,3 +605,133 @@
     border-radius: 8px;
   }
 }
+
+
+/* Gallery Header */
+.gallery-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.image-count {
+  font-size: 0.875rem;
+  color: rgba(47, 27, 10, 0.6);
+  font-weight: 500;
+}
+
+/* View More Item */
+.view-more-item {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border: 2px dashed #dee2e6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.view-more-item:hover {
+  transform: translateY(-4px);
+  border-color: var(--primary);
+  background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%);
+}
+
+.view-more-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: var(--primary);
+  text-align: center;
+}
+
+.view-more-content span {
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.more-count {
+  font-size: 0.75rem !important;
+  color: rgba(47, 27, 10, 0.7);
+  background: rgba(47, 27, 10, 0.1);
+  padding: 2px 8px;
+  border-radius: 12px;
+}
+
+/* Show Less Button */
+.show-less-button {
+  width: 100%;
+  margin-top: 16px;
+  padding: 12px;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.875rem;
+}
+
+.show-less-button:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+/* Responsive Grid for Gallery */
+.image-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-top: 0;
+}
+
+/* For larger screens when showing all images */
+@media (min-width: 768px) {
+  .image-gallery:has(.view-more-item) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .image-gallery:not(:has(.view-more-item)) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .image-gallery {
+    grid-template-columns: 1fr;
+  }
+  
+  .gallery-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}
+
+/* Smooth expansion animation */
+.image-gallery {
+  transition: grid-template-columns 0.3s ease;
+}
+
+/* Gallery item animations */
+.gallery-item, .view-more-item {
+  animation: fadeInUp 0.5s ease forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
