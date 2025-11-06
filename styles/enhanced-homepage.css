@@ -101,16 +101,11 @@
 
 /* All your existing responsive and other styles remain the same */
 .enhanced-homepage {
-  padding: 5rem 1rem;
+  
   background-color: var(--card);
   border-top: 4px solid var(--gold);
 }
 
-@media (min-width: 768px) {
-  .enhanced-homepage {
-    padding: 8rem 1rem;
-  }
-}
 
 .enhanced-content {
   max-width: 80rem;

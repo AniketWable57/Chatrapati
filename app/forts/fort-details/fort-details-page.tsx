@@ -2,7 +2,8 @@
 
 import { motion } from "framer-motion"
 import { useRouter } from "next/navigation"
-import { ArrowLeft, MapPin, Calendar, Users, Shield, Clock, Navigation, Star } from "lucide-react"
+import { ArrowLeft, MapPin, Calendar, Users, Shield, Clock, Navigation, Star, X, ChevronLeft, ChevronRight } from "lucide-react"
+import { useState } from "react"
 import "../../../styles/forts-details.css"
 
 interface FortDetails {
@@ -27,12 +28,33 @@ interface FortDetailsPageProps {
     description: string
     significance: string
     image: string
+    images?: string[] // Add multiple images
     fullHistory: FortDetails
   }
 }
 
 export default function FortDetailsPage({ fort }: FortDetailsPageProps) {
   const router = useRouter()
+  const [selectedImage, setSelectedImage] = useState<number | null>(null)
+  
+  // Use the main image plus additional images if available
+  const allImages = [fort.image, ...(fort.images || [])]
+
+  const nextImage = () => {
+    if (selectedImage !== null) {
+      setSelectedImage((selectedImage + 1) % allImages.length)
+    }
+  }
+
+  const prevImage = () => {
+    if (selectedImage !== null) {
+      setSelectedImage((selectedImage - 1 + allImages.length) % allImages.length)
+    }
+  }
+
+  const closeModal = () => {
+    setSelectedImage(null)
+  }
 
   return (
     <div className="fort-details-page">
@@ -125,6 +147,30 @@ export default function FortDetailsPage({ fort }: FortDetailsPageProps) {
               </div>
             </div>
 
+            {/* Image Gallery */}
+            {allImages.length > 1 && (
+              <div className="info-card">
+                <h3>Gallery</h3>
+                <div className="image-gallery">
+                  {allImages.map((image, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: 0.4 + index * 0.1 }}
+                      className="gallery-item"
+                      onClick={() => setSelectedImage(index)}
+                    >
+                      <img src={image} alt={`${fort.name} view ${index + 1}`} />
+                      <div className="gallery-overlay">
+                        <span className="view-text">View</span>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            )}
+
             {/* Architecture Info */}
             <div className="info-card">
               <h3>Architecture Style</h3>
@@ -193,11 +239,8 @@ export default function FortDetailsPage({ fort }: FortDetailsPageProps) {
             {/* Current Status */}
             <div className="detail-section">
               <h3>Current Status</h3>
-              <div className="status-badge">
-                {fort.fullHistory.currentStatus}
-              </div>
               <p className="status-description">
-                This fort is maintained as a historical monument and is open to visitors interested in Maratha history and architecture.
+               {fort.fullHistory.currentStatus}
               </p>
             </div>
 
@@ -219,6 +262,39 @@ export default function FortDetailsPage({ fort }: FortDetailsPageProps) {
           </motion.div>
         </div>
       </div>
+
+      {/* Image Modal */}
+      {selectedImage !== null && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="image-modal"
+          onClick={closeModal}
+        >
+          <button className="modal-close" onClick={closeModal}>
+            <X size={24} />
+          </button>
+          
+          <button className="modal-nav modal-nav-prev" onClick={(e) => { e.stopPropagation(); prevImage(); }}>
+            <ChevronLeft size={32} />
+          </button>
+          
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <img 
+              src={allImages[selectedImage]} 
+              alt={`${fort.name} view ${selectedImage + 1}`}
+            />
+            <div className="image-counter">
+              {selectedImage + 1} / {allImages.length}
+            </div>
+          </div>
+          
+          <button className="modal-nav modal-nav-next" onClick={(e) => { e.stopPropagation(); nextImage(); }}>
+            <ChevronRight size={32} />
+          </button>
+        </motion.div>
+      )}
     </div>
   )
 }

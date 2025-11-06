@@ -1,14 +1,11 @@
 .hero-section {
-margin-top: -60px;
-  padding: 5rem 1rem;
+
+
   overflow: hidden;
+  text-align: justify;
 }
 
-@media (min-width: 768px) {
-  .hero-section {
-    padding: 8rem 1rem;
-  }
-}
+
 
 .hero-background {
   position: absolute;
@@ -87,89 +84,134 @@ margin-top: -60px;
   font-size: 1.125rem;
   color: rgba(47, 27, 10, 0.8);
   line-height: 1.8;
-  max-width: 28rem;
   margin: 0;
+}
+
+/* Stats Container - Centered below grid */
+.hero-stats-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(212, 175, 55, 0.2);
 }
 
 .hero-stats {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-  padding-top: 1rem;
+  gap: 2rem;
+  max-width: 600px;
+  width: 100%;
+}
+
+@media (max-width: 640px) {
+  .hero-stats {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    max-width: 300px;
+  }
 }
 
 .stat-card {
   background: linear-gradient(135deg, #fdf5e6 0%, #f5ecdb 100%);
-  padding: 1rem;
-  border-radius: 0.5rem;
+  padding: 1.5rem 1rem;
+  border-radius: 0.75rem;
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
   text-align: center;
   transition: all 0.3s ease-out;
+  border: 1px solid rgba(212, 175, 55, 0.2);
 }
 
 .stat-card:hover {
   transform: translateY(-5px);
   background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(212, 175, 55, 0.05) 100%);
   box-shadow: 0 8px 24px rgba(212, 175, 55, 0.2);
+  border-color: rgba(212, 175, 55, 0.3);
 }
 
 .stat-number {
-  font-size: 1.875rem;
+  font-size: 2rem;
   font-weight: bold;
   color: var(--secondary);
   margin: 0;
   line-height: 1;
+  font-family: "Playfair Display", serif;
 }
 
 .stat-label {
-  font-size: 0.875rem;
-  color: rgba(47, 27, 10, 0.6);
-  margin: 0.5rem 0 0 0;
+  font-size: 0.9rem;
+  color: rgba(47, 27, 10, 0.7);
+  margin: 0.75rem 0 0 0;
   line-height: 1.2;
+  font-weight: 500;
+}
+
+/* CTA Buttons Container - Centered below stats */
+.hero-buttons-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 2.5rem;
 }
 
 .hero-buttons {
   display: flex;
-  gap: 1rem;
-  padding-top: 1rem;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+@media (max-width: 480px) {
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 .btn-primary {
-  padding: 0.75rem 1.5rem;
+  padding: 1rem 2rem;
   background-color: var(--primary);
   color: var(--gold);
   border: none;
-  border-radius: 0.5rem;
+  border-radius: 0.75rem;
   font-family: "Playfair Display", serif;
   font-weight: bold;
   cursor: pointer;
   transition: all 0.3s ease;
   text-decoration: none;
   display: inline-block;
+  font-size: 1.1rem;
+  min-width: 160px;
+  text-align: center;
+
 }
 
 .btn-primary:hover {
   background-color: var(--accent);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  transform: translateY(-2px);
 }
 
 .btn-secondary {
-  padding: 0.75rem 1.5rem;
+  padding: 1rem 2rem;
   border: 2px solid var(--secondary);
   color: var(--primary);
   background: transparent;
-  border-radius: 0.5rem;
+  border-radius: 0.75rem;
   font-family: "Playfair Display", serif;
   font-weight: bold;
   cursor: pointer;
   transition: all 0.3s ease;
   text-decoration: none;
   display: inline-block;
+  font-size: 1.1rem;
+  min-width: 160px;
+  text-align: center;
 }
 
 .btn-secondary:hover {
-  background-color: rgba(212, 175, 55, 0.1);
+  background-color: var(--accent);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  transform: translateY(-2px);
 }
 
 /* Image Section Styles */

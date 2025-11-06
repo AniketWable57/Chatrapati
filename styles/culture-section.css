@@ -1,11 +1,11 @@
 .culture-section {
-  padding: 5rem 1rem;
+
   background: linear-gradient(to bottom, var(--card), var(--background));
 }
 
 @media (min-width: 768px) {
   .culture-section {
-    padding: 8rem 1rem;
+
   }
 }
 

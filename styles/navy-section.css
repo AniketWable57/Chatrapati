@@ -1,11 +1,11 @@
 .navy-section {
-  padding: 5rem 1rem;
+  
   background-color: var(--background);
 }
 
 @media (min-width: 768px) {
   .navy-section {
-    padding: 8rem 1rem;
+    
   }
 }
 
