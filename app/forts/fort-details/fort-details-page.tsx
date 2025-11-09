@@ -2,9 +2,10 @@
 
 import { motion } from "framer-motion"
 import { useRouter } from "next/navigation"
-import { ArrowLeft, MapPin, Calendar, Users, Shield, Clock, Navigation, Star, X, ChevronLeft, ChevronRight, Grid3X3 } from "lucide-react"
-import { useState } from "react"
+import { ArrowLeft, MapPin, Calendar, Users, Shield, Clock, Navigation, Star, X, ChevronLeft, ChevronRight, Grid3X3, Sword, ChevronRightIcon } from "lucide-react"
+import { useState, useRef } from "react"
 import "../../../styles/forts-details.css"
+import { warriors } from "../../warriors/warriors"
 
 interface FortDetails {
   builtBy: string
@@ -28,7 +29,7 @@ interface FortDetailsPageProps {
     description: string
     significance: string
     image: string
-    images?: string[] // Add multiple images
+    images?: string[]
     fullHistory: FortDetails
   }
 }
@@ -37,6 +38,7 @@ export default function FortDetailsPage({ fort }: FortDetailsPageProps) {
   const router = useRouter()
   const [selectedImage, setSelectedImage] = useState<number | null>(null)
   const [showAllImages, setShowAllImages] = useState(false)
+  const warriorsCarouselRef = useRef<HTMLDivElement>(null)
   
   // Use the main image plus additional images if available
   const allImages = [fort.image, ...(fort.images || [])]
@@ -44,6 +46,11 @@ export default function FortDetailsPage({ fort }: FortDetailsPageProps) {
   // Show only first 6 images initially, or all if showAllImages is true
   const displayedImages = showAllImages ? allImages : allImages.slice(0, 6)
   const hasMoreImages = allImages.length > 6
+
+  // Get warriors related to this fort
+  const relatedWarriors = warriors.filter(warrior => 
+    warrior.relatedForts.includes(fort.id)
+  )
 
   const nextImage = () => {
     if (selectedImage !== null) {
@@ -63,6 +70,22 @@ export default function FortDetailsPage({ fort }: FortDetailsPageProps) {
 
   const toggleShowAllImages = () => {
     setShowAllImages(!showAllImages)
+  }
+
+  const navigateToWarrior = (warriorId: string) => {
+    router.push(`/warriors/${warriorId}`)
+  }
+
+  const scrollWarriorsLeft = () => {
+    if (warriorsCarouselRef.current) {
+      warriorsCarouselRef.current.scrollBy({ left: -300, behavior: 'smooth' })
+    }
+  }
+
+  const scrollWarriorsRight = () => {
+    if (warriorsCarouselRef.current) {
+      warriorsCarouselRef.current.scrollBy({ left: 300, behavior: 'smooth' })
+    }
   }
 
   return (
@@ -286,6 +309,7 @@ export default function FortDetailsPage({ fort }: FortDetailsPageProps) {
               </p>
             </div>
 
+
             {/* Visitor Information */}
             <div className="detail-section">
               <h3>Visitor Information</h3>
@@ -339,4 +363,4 @@ export default function FortDetailsPage({ fort }: FortDetailsPageProps) {
       )}
     </div>
   )
-}
+} 

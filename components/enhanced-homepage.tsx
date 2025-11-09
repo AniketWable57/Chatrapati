@@ -54,6 +54,14 @@ export default function EnhancedHomepage() {
       color: "from-[var(--primary)]",
       image: "/images/sord.jpg"
     },
+     {
+      title: "Warriors",
+      description: "Warriors of the Maratha Empire",
+      link: "/warriors",
+      color: "from-[var(--primary)]",
+      image: "/images/army.jpg"
+    },
+    
   ]
 
   return (

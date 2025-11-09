@@ -1,0 +1,89 @@
+.warriors-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.warriors-page-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: center;
+  color: #2d3748;
+  margin-bottom: 2rem;
+}
+
+.warriors-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .warriors-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .warriors-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.warrior-card {
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: block;
+  color: inherit;
+  border: 1px solid #e2e8f0;
+}
+
+.warrior-card:hover {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+}
+
+.warrior-card-image-container {
+  height: 12rem;
+  overflow: hidden;
+  background-color: #f7fafc;
+}
+
+.warrior-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.warrior-card:hover .warrior-card-image {
+  transform: scale(1.05);
+}
+
+.warrior-card-content {
+  padding: 1.25rem;
+}
+
+.warrior-name {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1a202c;
+  margin-bottom: 0.5rem;
+}
+
+.warrior-title {
+  color: #4a5568;
+  font-size: 0.875rem;
+  margin-bottom: 0.25rem;
+  font-weight: 500;
+}
+
+.warrior-era {
+  color: #718096;
+  font-size: 0.75rem;
+  font-style: italic;
+}

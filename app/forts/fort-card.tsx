@@ -35,8 +35,8 @@ export default function FortCard({
     router.push(`/forts/${id}`)
   }
 
-  // Function to truncate description to 3 lines
-  const truncateDescription = (text: string, maxLines: number = 3) => {
+  // Function to truncate text to specified number of lines
+  const truncateText = (text: string, maxLines: number = 3) => {
     const words = text.split(' ')
     let lineCount = 0
     let result = []
@@ -57,7 +57,8 @@ export default function FortCard({
     return truncatedText.length < text.length ? truncatedText + '...' : truncatedText
   }
 
-  const truncatedDescription = truncateDescription(description)
+  const truncatedDescription = truncateText(description, 3)
+  const truncatedSignificance = truncateText(significance, 2) // Truncate to 2 lines
 
   return (
     <motion.div
@@ -117,7 +118,7 @@ export default function FortCard({
 
           <div className="fort-significance">
             <p className="fort-significance-label">Historical Significance</p>
-            <p className="fort-significance-text">{significance}</p>
+            <p className="fort-significance-text">{truncatedSignificance}</p>
           </div>
         </div>
       </div>

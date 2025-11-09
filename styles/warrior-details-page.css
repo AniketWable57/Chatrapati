@@ -1,0 +1,401 @@
+.warrior-detail-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  min-height: 100vh;
+  position: relative;
+}
+
+.warrior-not-found {
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.warrior-not-found h1 {
+  color: #e53e3e;
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.warrior-id-message {
+  font-size: 1.25rem;
+  color: #4a5568;
+  margin-bottom: 1rem;
+}
+
+.warrior-id {
+  background: #edf2f7;
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.375rem;
+  font-family: monospace;
+  color: #2d3748;
+  font-weight: 600;
+}
+
+.warrior-not-found-text {
+  color: #718096;
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+.warrior-detail-card {
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 1024px) {
+  .warrior-detail-card {
+    grid-template-columns: 400px 1fr;
+  }
+}
+
+.warrior-detail-image-section {
+  background: #f7fafc;
+  padding: 2rem;
+}
+
+.main-image-container {
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.warrior-detail-image {
+  width: 100%;
+  height: auto;
+  max-height: 500px;
+  object-fit: contain;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.warrior-detail-image:hover {
+  transform: scale(1.02);
+}
+
+.warrior-image-gallery h3 {
+  font-size: 1.25rem;
+  color: #2d3748;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #e2e8f0;
+  padding-bottom: 0.5rem;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+}
+
+.gallery-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.gallery-image {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.gallery-image:hover {
+  transform: scale(1.05);
+  border-color: #3182ce;
+  box-shadow: 0 4px 12px rgba(49, 130, 206, 0.3);
+}
+
+.warrior-detail-content {
+  padding: 2rem;
+}
+
+.warrior-detail-name {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #1a202c;
+  margin-bottom: 0.5rem;
+}
+
+.warrior-detail-title {
+  font-size: 1.25rem;
+  color: #4a5568;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.warrior-detail-era {
+  font-size: 1rem;
+  color: #718096;
+  margin-bottom: 2rem;
+  font-style: italic;
+}
+
+.warrior-basic-info {
+  background: #f7fafc;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.info-label {
+  font-weight: 600;
+  color: #2d3748;
+  font-size: 0.875rem;
+  margin-bottom: 0.25rem;
+}
+
+.info-value {
+  color: #4a5568;
+  font-size: 0.95rem;
+}
+
+.warrior-detail-description,
+.warrior-detail-significance,
+.warrior-detail-achievements,
+.warrior-detail-battles,
+.warrior-detail-weapons,
+.warrior-detail-strategies,
+.warrior-detail-horse,
+.warrior-detail-training,
+.warrior-detail-mentor,
+.warrior-detail-lastwords,
+.warrior-detail-memorials {
+  margin-bottom: 2rem;
+}
+
+.warrior-detail-description h3,
+.warrior-detail-significance h3,
+.warrior-detail-achievements h3,
+.warrior-detail-battles h3,
+.warrior-detail-weapons h3,
+.warrior-detail-strategies h3,
+.warrior-detail-horse h3,
+.warrior-detail-training h3,
+.warrior-detail-mentor h3,
+.warrior-detail-lastwords h3,
+.warrior-detail-memorials h3 {
+  font-size: 1.5rem;
+  color: #2d3748;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #e2e8f0;
+  padding-bottom: 0.5rem;
+}
+
+.warrior-detail-description p,
+.warrior-detail-significance p {
+  line-height: 1.7;
+  color: #4a5568;
+}
+
+.warrior-detail-achievements ul,
+.warrior-detail-battles ul,
+.warrior-detail-strategies ul,
+.warrior-detail-memorials ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.warrior-detail-achievements li,
+.warrior-detail-battles li,
+.warrior-detail-strategies li,
+.warrior-detail-memorials li {
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.5rem;
+  background: #f7fafc;
+  border-left: 4px solid #3182ce;
+  border-radius: 0.25rem;
+  color: #2d3748;
+}
+
+.weapons-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.weapon-tag {
+  padding: 0.5rem 1rem;
+  background: #3182ce;
+  color: white;
+  border-radius: 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.last-words {
+  font-style: italic;
+  color: #718096;
+  font-size: 1.1rem;
+  padding: 1rem;
+  background: #fffaf0;
+  border-left: 4px solid #dd6b20;
+  border-radius: 0.25rem;
+}
+
+.back-button {
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 0.75rem 1.5rem;
+  background: #3182ce;
+  color: white;
+  text-decoration: none;
+  border-radius: 0.375rem;
+  transition: background-color 0.3s ease;
+  font-weight: 500;
+}
+
+.back-button:hover {
+  background: #2c5aa0;
+}
+
+/* Fullscreen Modal Styles */
+.fullscreen-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.95);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+.fullscreen-image {
+  max-width: 95%;
+  max-height: 95%;
+  object-fit: contain;
+  border-radius: 0.5rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.close-modal {
+  position: absolute;
+  top: 1.5rem;
+  right: 2rem;
+  color: white;
+  font-size: 3rem;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 1001;
+  transition: color 0.3s ease;
+  background: rgba(0, 0, 0, 0.5);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.close-modal:hover {
+  color: #ff6b6b;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .warrior-detail-container {
+    padding: 1rem;
+  }
+  
+  .warrior-detail-image-section {
+    padding: 1rem;
+  }
+  
+  .warrior-detail-content {
+    padding: 1rem;
+  }
+  
+  .warrior-detail-name {
+    font-size: 2rem;
+  }
+  
+  .gallery-grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  }
+  
+  .gallery-image {
+    height: 100px;
+  }
+  
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .close-modal {
+    top: 1rem;
+    right: 1.5rem;
+    font-size: 2.5rem;
+    width: 40px;
+    height: 40px;
+  }
+  
+  .fullscreen-image {
+    max-width: 100%;
+    max-height: 85%;
+  }
+}
+
+@media (max-width: 480px) {
+  .warrior-detail-card {
+    gap: 1rem;
+  }
+  
+  .warrior-detail-name {
+    font-size: 1.75rem;
+  }
+  
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .gallery-image {
+    height: 80px;
+  }
+  
+  .weapons-list {
+    justify-content: center;
+  }
+}
+
+/* Touch device improvements */
+@media (hover: none) and (pointer: coarse) {
+  .gallery-image:hover {
+    transform: none;
+    border-color: transparent;
+    box-shadow: none;
+  }
+  
+  .warrior-detail-image:hover {
+    transform: none;
+  }
+}
