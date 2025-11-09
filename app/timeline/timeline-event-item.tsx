@@ -25,6 +25,16 @@ export default function TimelineEventItem({
         <div 
           className="timeline-card"
           onClick={() => onEventClick(activeEvent === event.id ? 0 : event.id)}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              onEventClick(activeEvent === event.id ? 0 : event.id);
+            }
+          }}
+          tabIndex={0}
+          role="button"
+          aria-expanded={activeEvent === event.id}
+          aria-label={`Toggle details for ${event.title}`}
         >
           <div className="year-badge">
             <Calendar className="icon-small" />
@@ -45,10 +55,13 @@ export default function TimelineEventItem({
                 className="detailed-description"
                 dangerouslySetInnerHTML={{ __html: event.fullContent.detailedDescription }}
               />
+              
               <div className="action-buttons">
                 <Link
                   href={`/timeline/${event.id}`}
                   className="full-story-button"
+                  onClick={(e) => e.stopPropagation()}
+                  aria-label={`Read full story about ${event.title}`}
                 >
                   <Sword className="icon-small" />
                   Full Story
@@ -62,6 +75,8 @@ export default function TimelineEventItem({
               <Link
                 href={`/timeline/${event.id}`}
                 className="read-more-link"
+                onClick={(e) => e.stopPropagation()}
+                aria-label={`Read full story about ${event.title}`}
               >
                 Read Full Story
                 <ArrowRight className="icon-small" />
