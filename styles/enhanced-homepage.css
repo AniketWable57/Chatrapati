@@ -79,8 +79,9 @@
 }
 
 .section-card:hover .section-card-button {
-  background-color: var(--gold);
+  background-color: #ff9933;
   color: var(--primary);
+
 }
 
 .section-card-divider {

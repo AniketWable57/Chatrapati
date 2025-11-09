@@ -136,7 +136,7 @@ export const warriors: Warrior[] = [
   },
   {
     id: "sambhaji-maharaj",
-    name: "Sambhaji Maharaj",
+    name: "Chatrapati Sambhaji Maharaj",
     title: "Second Chhatrapati of Maratha Empire",
     era: "Maratha Empire",
     servicePeriod: "1674-1689",

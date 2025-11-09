@@ -1,10 +1,20 @@
-"use client"
+export interface TimelineEvent {
+  id: number;
+  year: string;
+  title: string;
+  description: string;
+  fullContent: {
+    images: string[];
+    detailedDescription: string;
+  };
+}
 
-import TimelineItem from "./timeline-item"
-import "../styles/timeline-section.css"
-import { useRouter } from "next/navigation"
+export interface TimelineProps {
+  events: TimelineEvent[];
+  showAll?: boolean;
+}
 
-const timelineEvents = [
+export const timelineEvents: TimelineEvent[] = [
   {
     id: 1,
     year: "1630",
@@ -143,66 +153,4 @@ const timelineEvents = [
       `
     }
   },
-]
-
-export default function TimelineSection() {
-  const router = useRouter()
-  const displayedEvents = timelineEvents.slice(0, 5)
-  const hasMoreEvents = timelineEvents.length > 5
-
-  const handleEventClick = (eventId: number) => {
-    router.push(`/events/${eventId}`)
-  }
-
-  const handleViewAll = () => {
-    router.push('/timeline')
-  }
-
-  return (
-    <section className="timeline-section">
-      <div className="timeline-content">
-        {/* Section Header */}
-        <div className="timeline-header">
-          <p className="timeline-subtitle">KEY MILESTONES</p>
-          <h2 className="timeline-title">Timeline of Glory</h2>
-        </div>
-
-        {/* Timeline */}
-        <div className="timeline-list">
-          {displayedEvents.map((event, index) => (
-            <TimelineItem
-              key={event.id}
-              year={event.year}
-              title={event.title}
-              description={event.description}
-              isEven={index % 2 === 0}
-              onClick={() => handleEventClick(event.id)} // This should work now
-            />
-          ))}
-        </div>
-
-        {/* Continue Reading Button */}
-        {hasMoreEvents && (
-          <div className="timeline-actions">
-            <button 
-              className="continue-reading-btn"
-              onClick={handleViewAll}
-            >
-              Continue Reading
-              <svg 
-                width="16" 
-                height="16" 
-                viewBox="0 0 24 24" 
-                fill="none" 
-                stroke="currentColor" 
-                strokeWidth="2"
-              >
-                <path d="M5 12h14M12 5l7 7-7 7"/>
-              </svg>
-            </button>
-          </div>
-        )}
-      </div>
-    </section>
-  )
-}
+];

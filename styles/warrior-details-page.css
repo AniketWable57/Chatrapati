@@ -115,8 +115,8 @@
 
 .gallery-image:hover {
   transform: scale(1.05);
-  border-color: #3182ce;
-  box-shadow: 0 4px 12px rgba(49, 130, 206, 0.3);
+  border-color: #ff9933;
+  box-shadow: 0 4px 12px rgba(255, 153, 51, 0.3);
 }
 
 .warrior-detail-content {
@@ -227,7 +227,7 @@
   padding: 0.75rem 1rem;
   margin-bottom: 0.5rem;
   background: #f7fafc;
-  border-left: 4px solid #3182ce;
+  border-left: 4px solid #ff9933;
   border-radius: 0.25rem;
   color: #2d3748;
 }
@@ -240,7 +240,7 @@
 
 .weapon-tag {
   padding: 0.5rem 1rem;
-  background: #3182ce;
+  background: #ff9933;
   color: white;
   border-radius: 1rem;
   font-size: 0.875rem;
@@ -261,7 +261,7 @@
   display: inline-block;
   margin-top: 2rem;
   padding: 0.75rem 1.5rem;
-  background: #3182ce;
+  background: #ff9933;
   color: white;
   text-decoration: none;
   border-radius: 0.375rem;
@@ -270,7 +270,7 @@
 }
 
 .back-button:hover {
-  background: #2c5aa0;
+  background: #e6892e;
 }
 
 /* Fullscreen Modal Styles */
