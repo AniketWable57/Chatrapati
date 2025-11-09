@@ -97,7 +97,7 @@ export const warriors: Warrior[] = [
     commander: "Chhatrapati Shivaji Maharaj",
     description: `Baji Prabhu Deshpande is immortalized in Maratha history for his extraordinary sacrifice at the Battle of Pavan Khind in 1660. As Shivaji Maharaj was escaping from Panhala Fort which was under siege by Siddi Jauhar's forces, Baji Prabhu volunteered to hold back the enemy at a narrow mountain pass called Ghodkhind. With just 300 soldiers, Baji Prabhu defended the pass against a 10,000-strong Bijapuri army for over 15 hours. He continued fighting even after being severely wounded, buying crucial time for Shivaji to reach safety at Vishalgad Fort. According to legend, Baji Prabhu fought until he heard cannon fire from Vishalgad, signaling Shivaji's safe arrival. Only then did he succumb to his injuries. This heroic stand allowed Shivaji to escape and continue the Maratha struggle for independence.`,
     significance: "Symbol of ultimate sacrifice and loyalty, hero of Pavan Khind",
-    image: "/images/warriors/baji-prabhu-deshpande.jpg",
+    image: "/images/warriors/baji-prabhu-deshpande/baji.jpg",
     relatedForts: ["panhala-fort", "vishalgad-fort", "raigad-fort"],
     fullHistory: {
       birthDate: "c. 1615",
@@ -143,7 +143,7 @@ export const warriors: Warrior[] = [
     commander: "Self (Chhatrapati)",
     description: `Sambhaji Bhosale was the second Chhatrapati of the Maratha Empire, succeeding his father Shivaji Maharaj. Born at Purandar Fort, Sambhaji was trained in administration and warfare from a young age. His reign was marked by continuous warfare against the Mughal Empire under Aurangzeb. Despite being captured and subjected to brutal torture, Sambhaji refused to convert to Islam or reveal Maratha secrets. He was executed by Aurangzeb in 1689, but his martyrdom inspired the Marathas to continue their struggle. Sambhaji was also a scholar and wrote several works in Sanskrit and Marathi.`,
     significance: "Martyr Chhatrapati who defended Maratha sovereignty against Mughals",
-    image: "/images/warriors/sambhaji-maharaj.jpg",
+    image: "/images/warriors/chhatrapati-sambhaji-maharaj/chhatrapati-sambjaji-maharaj.jpg",
     relatedForts: ["purandar-fort", "raigad-fort", "panhala-fort", "vijaydurg-fort"],
     fullHistory: {
       birthDate: "May 14, 1657",
