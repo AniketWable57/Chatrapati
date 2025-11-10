@@ -70,8 +70,8 @@
   align-items: center;
   padding: 1rem 2rem;
   background: white;
-  color: #ff9933;
-  border: 2px solid #ff9933;
+  color: #000000;
+  border: 2px solid #000000;
   border-radius: 9999px;
   font-size: 1.125rem;
   font-weight: 600;
@@ -80,8 +80,8 @@
 }
 
 .know-more-button:hover {
-  background: #ff9933;
-  color: white;
+  background: #ffffff;
+  color: rgb(0, 0, 0);
   transform: scale(1.05);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
 }

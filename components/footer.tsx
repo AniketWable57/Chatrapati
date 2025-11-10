@@ -66,7 +66,7 @@ export default function Footer() {
             <ul className="footer-contact-list">
               <li className="footer-contact-item">
                 <MapPin size={16} className="footer-contact-icon" />
-                <span>India</span>
+                <span>Swarajya</span>
               </li>
               <li className="footer-contact-item">
                 <Mail size={16} className="footer-contact-icon" />
@@ -76,7 +76,7 @@ export default function Footer() {
               </li>
               <li className="footer-contact-item">
                 <Phone size={16} className="footer-contact-icon" />
-                <span>+91 (555) 123-4567</span>
+                <span>+91  8308026653</span>
               </li>
             </ul>
           </div>

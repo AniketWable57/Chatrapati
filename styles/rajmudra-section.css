@@ -1,0 +1,123 @@
+/* Rajmudra Section Styles */
+.rajmudra-section {
+  background-color: var(--card);
+  border-top: 4px solid var(--gold);
+  padding: 4rem 0;
+}
+
+.rajmudra-content {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+@media (min-width: 640px) {
+  .rajmudra-content {
+    padding: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .rajmudra-content {
+    padding: 2rem;
+  }
+}
+
+.rajmudra-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.rajmudra-subtitle {
+  color: var(--secondary);
+  font-family: "Playfair Display", serif;
+  font-size: 1.125rem;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+}
+
+.rajmudra-title {
+  font-size: clamp(1.5rem, 4vw, 3.125rem);
+  font-family: "Playfair Display", serif;
+  font-weight: bold;
+  color: var(--primary);
+}
+
+/* Image container - full width at top */
+.rajmudra-image-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3rem;
+  max-width: 100%;
+}
+
+.rajmudra-image {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 0.5rem;
+}
+
+/* Text content - vertical sequence below image */
+.rajmudra-text-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.sanskrit-text {
+  text-align: center;
+ 
+ 
+}
+
+.sanskrit-verse {
+  font-size: 1.5rem;
+  font-family: "Sanskrit Text", "Noto Sans Devanagari", serif;
+  color: var(--primary);
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.translation-section,
+.explanation-section {
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+.translation-title,
+.explanation-title {
+  font-size: 1.25rem;
+  font-family: "Playfair Display", serif;
+  font-weight: bold;
+  color: var(--primary);
+  margin-bottom: 1rem;
+  border-bottom: 2px solid var(--gold);
+  padding-bottom: 0.5rem;
+}
+
+.translation-text,
+.explanation-text {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: rgba(47, 27, 10, 0.8);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .sanskrit-verse {
+    font-size: 1.25rem;
+  }
+  
+  .translation-text,
+  .explanation-text {
+    font-size: 0.9rem;
+  }
+  
+  .rajmudra-text-container {
+    gap: 1.5rem;
+  }
+}

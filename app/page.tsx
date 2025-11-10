@@ -5,6 +5,7 @@ import EnhancedHomepage from "@/components/enhanced-homepage"
 import Footer from "@/components/footer"
 import TimelineSection from "./timeline/timeline-page"
 import TimelinePage from './timeline/timeline-page';
+import RajmudraSeaction from '@/components/RajmudraSection'
 
 
 export default function Home() {
@@ -14,7 +15,7 @@ export default function Home() {
       <HeroSection />
       <EnhancedHomepage />
     <TimelinePage showAll={false} />
-
+    <RajmudraSeaction/>
       
     </main>
   )
