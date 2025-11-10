@@ -13,6 +13,29 @@ export const metadata: Metadata = {
   title: "Chhatrapati Shivaji Maharaj - Maratha Empire Legacy",
   description: "Explore the life, legacy, and achievements of Chhatrapati Shivaji Maharaj and the Maratha Empire",
   generator: "v0.app",
+  icons: {
+    icon: [
+      { url: "/favicon/favicon.ico" },
+      { url: "/favicon/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+    ],
+    apple: [
+      { url: "/favicon/apple-touch-icon.png" },
+    ],
+    other: [
+      {
+        rel: "android-chrome",
+        url: "/favicon/android-chrome-192x192.png",
+        sizes: "192x192",
+      },
+      {
+        rel: "android-chrome",
+        url: "/favicon/android-chrome-512x512.png",
+        sizes: "512x512",
+      },
+    ],
+  },
+  manifest: "/favicon/site.webmanifest",
 }
 
 export default function RootLayout({
