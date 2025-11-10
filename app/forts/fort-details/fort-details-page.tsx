@@ -310,6 +310,13 @@ export default function FortDetailsPage({ fort }: FortDetailsPageProps) {
             </div>
 
 
+            <div className="crousel">
+
+              
+
+            </div>
+
+
             {/* Visitor Information */}
             <div className="detail-section">
               <h3>Visitor Information</h3>
