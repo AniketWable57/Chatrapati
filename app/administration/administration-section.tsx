@@ -4,7 +4,7 @@ import { motion } from "framer-motion"
 import { Users, Scale, BookOpen, Shield, Coins, Eye, FileText, Globe } from "lucide-react"
 import Link from "next/link"
 import { ashtaPradhan } from "./administration-data"
-import "../../styles/administration-section.css"
+import "../../styles/administration-section.css" // Ensure this path is correct
 
 export default function AdministrationSection() {
   const iconMap = {
@@ -46,7 +46,7 @@ export default function AdministrationSection() {
 
             Completing the pillars were the Nyayadhish (Chief Justice), who presided over the judicial system, and the Panditrao (High Priest), who managed religious and charitable affairs.
 
-            This structure ensured a system of checks and balances and specialization, transforming a scattered regional power into an organized, enduring administrative marvel that defined the Maratha state.          </p>
+            This structure ensured a system of checks and balances and specialization, transforming a scattered regional power into an organized, enduring administrative marvel that defined the Maratha state.          </p>
         </motion.div>
 
         {/* Debug Info */}
@@ -97,10 +97,23 @@ export default function AdministrationSection() {
 
                   <div className="administration-card-content">
                     <h3 className="administration-card-title">{minister.title}</h3>
-                    <p className="administration-card-text">{minister.description}</p>
+                    
+                    {/* MODIFIED: Added two-line-truncate class */}
+                    <p 
+                      className="administration-card-text two-line-truncate"
+                    >
+                      {minister.description}
+                    </p>
+                    
                     <div className="administration-powers">
-                      <p className="administration-powers-text">Powers: {minister.powers}</p>
+                      {/* MODIFIED: Added two-line-truncate class */}
+                      <p 
+                        className="administration-powers-text two-line-truncate"
+                      >
+                        Powers: {minister.powers}
+                      </p>
                     </div>
+                    
                     <div style={{
                       fontSize: '0.7rem',
                       color: '#888',

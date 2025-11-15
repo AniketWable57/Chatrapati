@@ -152,6 +152,52 @@ export default async function MinisterDetailPage({ params }: PageProps) {
             )}
           </div>
         </section>
+        
+           {/* Quick Facts Sidebar */}
+        <aside className="quick-facts-sidebar">
+          <div className="sidebar-card">
+            <h3>Quick Facts</h3>
+            <div className="facts-list">
+              <div className="fact-item">
+                <span className="fact-label">Council Rank</span>
+                <span className="fact-value">Ashta Pradhan</span>
+              </div>
+              <div className="fact-item">
+                <span className="fact-label">Administration</span>
+                <span className="fact-value">Maratha Empire</span>
+              </div>
+              <div className="fact-item">
+                <span className="fact-label">Period</span>
+                <span className="fact-value">17th Century</span>
+              </div>
+              {minister.tenure && (
+                <div className="fact-item">
+                  <span className="fact-label">Service Period</span>
+                  <span className="fact-value">{minister.tenure}</span>
+                </div>
+              )}
+            </div>
+          </div>
+          
+          <div className="navigation-card">
+            <h3>Other Ministers</h3>
+            <div className="other-ministers">
+              {ashtaPradhan
+                .filter(m => m.id !== minister.id)
+                .slice(0, 3)
+                .map((otherMinister) => (
+                  <Link 
+                    key={otherMinister.id}
+                    href={`/administration/${otherMinister.id}`}
+                    className="other-minister-link"
+                  >
+                    <span className="other-minister-name">{otherMinister.title}</span>
+                  </Link>
+                ))
+              }
+            </div>
+          </div>
+        </aside>
 
         {/* Detailed Information Grid */}
         <section className="content-section">
@@ -226,51 +272,7 @@ export default async function MinisterDetailPage({ params }: PageProps) {
           </div>
         </section>
 
-        {/* Quick Facts Sidebar */}
-        <aside className="quick-facts-sidebar">
-          <div className="sidebar-card">
-            <h3>Quick Facts</h3>
-            <div className="facts-list">
-              <div className="fact-item">
-                <span className="fact-label">Council Rank</span>
-                <span className="fact-value">Ashta Pradhan</span>
-              </div>
-              <div className="fact-item">
-                <span className="fact-label">Administration</span>
-                <span className="fact-value">Maratha Empire</span>
-              </div>
-              <div className="fact-item">
-                <span className="fact-label">Period</span>
-                <span className="fact-value">17th Century</span>
-              </div>
-              {minister.tenure && (
-                <div className="fact-item">
-                  <span className="fact-label">Service Period</span>
-                  <span className="fact-value">{minister.tenure}</span>
-                </div>
-              )}
-            </div>
-          </div>
-          
-          <div className="navigation-card">
-            <h3>Other Ministers</h3>
-            <div className="other-ministers">
-              {ashtaPradhan
-                .filter(m => m.id !== minister.id)
-                .slice(0, 3)
-                .map((otherMinister) => (
-                  <Link 
-                    key={otherMinister.id}
-                    href={`/administration/${otherMinister.id}`}
-                    className="other-minister-link"
-                  >
-                    <span className="other-minister-name">{otherMinister.title}</span>
-                  </Link>
-                ))
-              }
-            </div>
-          </div>
-        </aside>
+     
       </main>
 
       {/* Footer Section */}

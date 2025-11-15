@@ -15,7 +15,7 @@ export default function Footer() {
           <div>
             <h4 className="footer-section-title">About</h4>
             <p className="footer-section-text">
-              Dedicated to preserving and celebrating the legacy of Chhatrapati Shivaji Maharaj and the Maratha Empire.
+             This platform is devoted to exploring the revolutionary vision of Chhatrapati Shivaji Maharaj. We honor his legacy by illuminating the principles of the Maratha Swarajya: a realm built on just governance, military genius, and the protection of the people (Rayat).
             </p>
           </div>
 
