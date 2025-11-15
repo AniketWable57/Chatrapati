@@ -2,9 +2,11 @@
 
 import { motion } from "framer-motion"
 import "../../styles/biography-section.css"
+import TimelinePage from '../timeline/timeline-page';
 
 export default function BiographySection() {
   return (
+    <main>
     <section className="biography-section">
       <div className="biography-content">
         {/* Section Header */}
@@ -92,6 +94,10 @@ export default function BiographySection() {
           ))}
         </motion.div>
       </div>
+
     </section>
+     <TimelinePage showAll={false} />
+    </main>
+    
   )
 }
