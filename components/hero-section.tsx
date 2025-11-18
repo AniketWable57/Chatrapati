@@ -64,45 +64,32 @@ export default function HeroSection() {
           </motion.div>
         </div>
 
-        {/* Stats Section - Outside Grid, Centered */}
+        {/* Hindi Verse Section - Simple Centered Layout */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="hero-stats-container"
+          className="hindi-verse-section"
         >
-          <div className="hero-stats">
-            <motion.div whileHover={{ y: -5 }} className="stat-card parchment">
-              <p className="stat-number">1674</p>
-              <p className="stat-label">Coronation Year</p>
-            </motion.div>
-            <motion.div whileHover={{ y: -5 }} className="stat-card parchment">
-              <p className="stat-number">300+</p>
-              <p className="stat-label">Forts Built</p>
-            </motion.div>
-            <motion.div whileHover={{ y: -5 }} className="stat-card parchment">
-              <p className="stat-number">100+</p>
-              <p className="stat-label">Naval Vessels</p>
-            </motion.div>
+          <div className="hindi-verse-content">
+            <p className="verse-line">इन्द्र जिमि जम्भ पर, बाडव सुअम्भ पर, रावन सदम्भ पर रघुकुल-राज है।</p>
+            <p className="verse-line">पौन बारिबाहु पर, सम्भु रतिनाह पर, ज्यों सहस्रबाहु पर राम-द्विजराज है ॥</p>
+            <p className="verse-line">दावा द्रम दण्ड पर, चीता मृग-झुण्ड पर, 'भूषन' बितुण्ड पर जैसे मृगराज है।</p>
+            <p className="verse-line">तेज तम अंस पर, कान्हु जिमि कंस पर, त्यों मलिच्छ बंस पर सेर सिवराज है ॥५६॥</p>
+          </div>
+
+          <div className="verse-translation">
+            <p className="translation-text">
+              "As Indra is supreme over demons, as fire over forests, as Rama over Ravana,
+              As Hanuman over the ocean, as Shiva over desire, as Rama over the thousand-armed,
+              As a lion over deer, O Bhushan, as the king of beasts is over animals,
+              So is Shivaji's glory over the Mughal race, as Krishna was over Kansa."
+            </p>
+            <p className="translation-author">- Bhushan</p>
           </div>
         </motion.div>
 
-        {/* CTA Buttons - Outside Grid, Centered */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-          className="hero-buttons-container"
-        >
-          <div className="hero-buttons">
-            <a href="#biography" className="btn-primary">
-              Explore Legacy
-            </a>
-            <a href="/biography" className="btn-secondary">
-              Learn History
-            </a>
-          </div>
-        </motion.div>
+       
       </div>
     </section>
   )

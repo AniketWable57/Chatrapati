@@ -87,7 +87,7 @@
   display: flex;
   flex-direction: column;
   height: fit-content;
-  min-height: 450px;
+  min-height: 550px;
   cursor: pointer;
 }
 
@@ -117,7 +117,7 @@
 .administration-image-container {
   position: relative;
   width: 100%;
-  height: 180px;
+  height: 350px; /* Fixed height for all cards */
   overflow: hidden;
   background: linear-gradient(135deg, #f59e0b, #d97706);
   flex-shrink: 0;
@@ -126,7 +126,8 @@
 .administration-image {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: cover; /* This will fill the container while maintaining aspect ratio */
+  object-position: center; /* Focus on center of image */
   transition: transform 0.3s ease;
   display: block;
 }

@@ -69,18 +69,128 @@
 
 .sanskrit-text {
   text-align: center;
- 
- 
 }
 
 .sanskrit-verse {
   font-size: 1.5rem;
   font-family: "Sanskrit Text", "Noto Sans Devanagari", serif;
   color: var(--primary);
-  margin-bottom: 1rem;
-  line-height: 1.6;
+ 
 }
 
+/* Meaning Section Styles */
+.meaning-container {
+  margin-top: 1rem;
+  text-align: center;
+  padding: 0 1rem;
+  max-width: 800px;
+}
+
+.meaning-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--primary);
+  margin-bottom: 1rem;
+  font-family: "Playfair Display", serif;
+  border-bottom: 2px solid var(--gold);
+  display: inline-block;
+  padding-bottom: 0.5rem;
+}
+
+.meaning-text {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: rgba(47, 27, 10, 0.8);
+  margin: 0 auto;
+  font-family: 'Inter', sans-serif;
+  font-style: italic;
+
+  padding: 1.5rem;
+  border-radius: 8px;
+  border-left: 4px solid var(--gold);
+}
+
+/* Significance Section Styles */
+.significance-container {
+  margin-top: 1rem;
+  text-align: center;
+  padding: 0 1rem;
+  max-width: 900px;
+}
+
+.significance-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--primary);
+  margin-bottom: 1.5rem;
+  font-family: "Playfair Display", serif;
+  border-bottom: 2px solid var(--gold);
+  display: inline-block;
+  padding-bottom: 0.5rem;
+}
+
+.significance-content {
+  text-align: left;
+  background: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+
+}
+
+.significance-text {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: rgba(47, 27, 10, 0.8);
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+.significance-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem 0;
+}
+
+.significance-item {
+  padding: 0.8rem 0;
+  border-bottom: 1px solid #eee;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: rgba(47, 27, 10, 0.8);
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.significance-item:before {
+  content: "•";
+  color: var(--gold);
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+  font-size: 1.2rem;
+}
+
+.significance-item:last-child {
+  border-bottom: none;
+}
+
+.significance-item strong {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.significance-conclusion {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: rgba(47, 27, 10, 0.8);
+  font-style: italic;
+ 
+  padding: 1rem;
+  border-radius: 6px;
+  border-left: 3px solid var(--gold);
+}
+
+/* Translation and Explanation Sections */
 .translation-section,
 .explanation-section {
   padding: 1.5rem;
@@ -112,6 +222,7 @@
     font-size: 1.25rem;
   }
   
+  .meaning-text,
   .translation-text,
   .explanation-text {
     font-size: 0.9rem;
@@ -119,5 +230,65 @@
   
   .rajmudra-text-container {
     gap: 1.5rem;
+  }
+  
+  .meaning-title,
+  .significance-title {
+    font-size: 1.3rem;
+  }
+  
+  .meaning-text {
+    padding: 1rem;
+  }
+  
+  .significance-content {
+    padding: 1.5rem;
+  }
+  
+  .significance-item {
+    font-size: 0.95rem;
+  }
+  
+  .significance-text {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .rajmudra-section {
+    padding: 2rem 0;
+  }
+  
+  .meaning-container,
+  .significance-container {
+    padding: 0 0.5rem;
+  }
+  
+  .significance-content {
+    padding: 1rem;
+  }
+  
+  .sanskrit-verse {
+    font-size: 1rem;
+  }
+  
+  .rajmudra-header {
+    margin-bottom: 2rem;
+  }
+  
+  .rajmudra-image-container {
+    margin-bottom: 2rem;
+  }
+}
+
+/* Additional responsive utilities */
+@media (min-width: 1024px) {
+  .rajmudra-text-container {
+    gap: 3rem;
+  }
+  
+  .meaning-container,
+  .significance-container {
+    padding: 0;
   }
 }

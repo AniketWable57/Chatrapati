@@ -1,81 +1,54 @@
 import MilitarySection from "./military-section"
-
+import Link from 'next/link';
+import { warriors } from '../warriors/warriors';
+import '../../styles/warriors-page.css';
 
 export default function Military() {
+  // Get first 5 warriors
+  const firstFiveWarriors = warriors.slice(0, 6);
+
   return (
     <div className="container">
       <MilitarySection/>
-      {/* <h1 className="page-title">Military System</h1>
-
-      <div className="content-section">
-        <h2>Maratha Military Organization</h2>
-        <p>
-          Shivaji Maharaj established a highly efficient and modern military system 
-          that combined traditional Maratha warfare with innovative tactics.
-        </p>
-
-        <div className="military-features">
-          <div className="feature">
-            <h3>Guerrilla Warfare</h3>
-            <p>
-              Known as 'Ganimi Kava', these tactics involved hit-and-run attacks, 
-              ambushes, and mobile warfare that confused and defeated larger enemy forces.
-            </p>
-          </div>
-
-          <div className="feature">
-            <h3>Cavalry</h3>
-            <p>
-              Light cavalry formed the backbone of Maratha forces, known for their 
-              speed, mobility, and ability to strike deep into enemy territory.
-            </p>
-          </div>
-
-          <div className="feature">
-            <h3>Infantry</h3>
-            <p>
-              Well-trained foot soldiers equipped with traditional weapons like 
-              swords, spears, and bows, along with firearms.
-            </p>
-          </div>
-
-          <div className="feature">
-            <h3>Intelligence Network</h3>
-            <p>
-              Sophisticated spy system that gathered information about enemy movements, 
-              plans, and weaknesses.
-            </p>
-          </div>
+      
+      {/* Warriors Preview Section */}
+      <section className="warriors-preview-section">
+        <div className="warriors-preview-header">
+          <h2 className="warriors-preview-title">Legendary Warriors</h2>
+          <p className="warriors-preview-subtitle">Meet the brave heroes who shaped Maratha history</p>
         </div>
-
-        <div className="military-structure">
-          <h3>Military Administration</h3>
-          <ul>
-            <li><strong>Sar-i-Naubat:</strong> Commander-in-Chief</li>
-            <li><strong>Sabnis:</strong> Military Secretary</li>
-            <li><strong>Karkhanis:</strong> Commissary General</li>
-            <li><strong>Mujumdar:</strong> Accountant General</li>
-          </ul>
+        
+        <div className="warriors-preview-grid">
+          {firstFiveWarriors.map((warrior) => (
+            <Link 
+              key={warrior.id} 
+              href={`/warriors/${warrior.id}`}
+              className="warrior-preview-card"
+            >
+              <div className="warrior-preview-image-container">
+                <img
+                  src={warrior.image}
+                  alt={warrior.name}
+                  className="warrior-preview-image"
+                />
+              </div>
+              <div className="warrior-preview-content">
+                <h3 className="warrior-preview-name">
+                  {warrior.name}
+                </h3>
+                <p className="warrior-preview-title">{warrior.title}</p>
+                <p className="warrior-preview-era">{warrior.era}</p>
+              </div>
+            </Link>
+          ))}
         </div>
-
-        <div className="notable-battles">
-          <h3>Notable Battles</h3>
-          <div className="battle-list">
-            <div className="battle">
-              <h4>Battle of Pratapgad (1659)</h4>
-              <p>Defeat of Afzal Khan, establishing Maratha supremacy</p>
-            </div>
-            <div className="battle">
-              <h4>Battle of Pavan Khind (1660)</h4>
-              <p>Baji Prabhu Deshpande's heroic last stand</p>
-            </div>
-            <div className="battle">
-              <h4>Battle of Sinhagad (1670)</h4>
-              <p>Capture of Kondhana fort by Tanaji Malusare</p>
-            </div>
-          </div>
+        
+        <div className="warriors-preview-actions">
+          <Link href="/warriors" className="view-all-button">
+            View All Warriors
+          </Link>
         </div>
-      </div> */}
+      </section>
     </div>
   )
 }

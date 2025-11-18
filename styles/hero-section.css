@@ -296,3 +296,105 @@
 .circle-inner {
   display: none;
 }
+
+
+/* Hindi Verse Section - Simple Centered Layout */
+.hindi-verse-section {
+  text-align: center;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.hindi-verse-content {
+  margin-bottom: 2rem;
+}
+
+.verse-line {
+  font-size: 1.3rem;
+  line-height: 1.8;
+  color: var(--primary);
+  margin: 0 0 0.5rem 0;
+  font-family: "Noto Sans Devanagari", "Segoe UI", sans-serif;
+  font-weight: 500;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .verse-line {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    text-align: center;
+  }
+}
+
+.verse-translation {
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.translation-text {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: rgba(47, 27, 10, 0.8);
+  margin: 0 0 1rem 0;
+  font-style: italic;
+  text-align: center;
+  font-family: "Playfair Display", serif;
+}
+
+.translation-author {
+  font-size: 1rem;
+  color: var(--secondary);
+  margin: 0;
+  text-align: center;
+  font-weight: 600;
+  font-family: "Playfair Display", serif;
+}
+
+/* Keep all your existing CSS styles below */
+.hero-section {
+  overflow: hidden;
+  text-align: justify;
+}
+
+.hero-background {
+  position: absolute;
+  inset: 0;
+  opacity: 0.05;
+}
+
+.hero-content {
+  position: relative;
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+@media (min-width: 640px) {
+  .hero-content {
+    padding: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-content {
+    padding: 2rem;
+  }
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .hero-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+  }
+}
+
+/* ... rest of your existing CSS remains the same ... */

@@ -93,7 +93,7 @@
 }
 
 .achievement-card {
-  background: linear-gradient(135deg, #fdf5e6 0%, #f5ecdb 100%);
+  background: white;
   padding: 2rem;
   border-radius: 0.5rem;
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
@@ -102,11 +102,7 @@
   transition: all 0.3s ease-out;
 }
 
-.achievement-card:hover {
-  transform: translateY(-2rem);
-  background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(212, 175, 55, 0.05) 100%);
-  box-shadow: 0 8px 24px rgba(212, 175, 55, 0.2);
-}
+
 
 .achievement-title {
   font-size: 1.5rem;

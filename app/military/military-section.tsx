@@ -44,6 +44,11 @@ export default function MilitarySection() {
         >
           <p className="military-subtitle">MILITARY EXCELLENCE</p>
           <h2 className="military-title">Military Organization</h2>
+           <p className="military-description">
+           Chhatrapati Shivaji Maharaj forged his Mavle army not with the promise of wealth, but with the sacred dream of Swarajya. These fierce soldiers were bound to their king not by the cold calculus of salary from the saranjam system alone, but by an unshakeable faith in his leadership and a burning devotion to their motherland. They were not mercenaries; they were devout champions of a holy cause. This profound belief transformed them into an unstoppable force—agile and lightning-fast in the rugged Sahyadris, where their light infantry and swift Bhimthadi cavalry moved like extensions of the mountains themselves. Their discipline was legendary, their valor unquestionable, as they wielded muskets and firangi swords not for plunder, but for liberation. From their impregnable hilltop fortresses, guarded by cannons crafted with the aid of master technicians, to their systematic conquests, every action was a prayer for self-rule. The Mavle were more than an army; they were the living, breathing embodiment of a people's will to be free, and in their hearts, the fire of Swarajya burned brighter than any ambition for gold.
+
+
+          </p>
         </motion.div>
 
         {/* Tactics */}
@@ -57,7 +62,7 @@ export default function MilitarySection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 whileHover={{ y: -8 }}
-                className="tactic-card parchment"
+                className="tactic-card"
               >
                 <Icon className="tactic-icon" />
                 <h3 className="tactic-title">{tactic.title}</h3>
@@ -105,7 +110,7 @@ export default function MilitarySection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.05 }}
                 whileHover={{ y: -4 }}
-                className="weapon-card parchment"
+                className="weapon-card"
               >
                 <p className="weapon-type">{weapon.type}</p>
                 <h4 className="weapon-name">{weapon.name}</h4>
