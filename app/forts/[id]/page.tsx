@@ -18,6 +18,9 @@ interface Fort {
   description: string
   significance: string
   image: string
+  images?: string[]
+  // add location to match FortDetailsPage's expected shape; using `any` keeps this flexible
+  location: any
   fullHistory: {
     builtBy: string
     constructionPeriod: string

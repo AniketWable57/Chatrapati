@@ -29,7 +29,12 @@ export const forts = [
   "/images/forts/raigad-fort/raigad-image (12).jpg",
   "/images/forts/raigad-fort/raigad-image (13).jpg",
   ],
-  
+  location: {
+      latitude: 18.2349,
+      longitude: 73.4461,
+      googleMapsLink: "https://maps.google.com/?q=18.2349,73.4461",
+      address: "Raigad Fort, Maharashtra 402305"
+    },
   fullHistory: {
       builtBy: "Chhatrapati Shivaji Shahaji Bhosale",
       constructionPeriod: "1656-1674",
@@ -52,10 +57,7 @@ export const forts = [
         "Rani Vasa (Queen's Quarters)",
         "Marketplace and Administrative buildings"
       ],
-      location: {
-        mapsLink: "https://maps.google.com/?q=Raigad+Fort",
-        coordinates: "18.2345° N, 73.4456° E"
-    }
+     
     }
   },
   {

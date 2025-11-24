@@ -16,13 +16,22 @@ import {
   ChevronRight, 
   Grid3X3,
   Sword,
-  ChevronRightIcon
+  ChevronRightIcon,
+  ExternalLink,
+  Map
 } from "lucide-react"
 import { useState, useRef, useCallback, useMemo } from "react"
 import "../../../styles/forts-details.css"
 import { warriors } from "@/app/warriors/warriors"
 
-// Types
+// Types (included in the same file)
+interface FortLocation {
+  latitude: number
+  longitude: number
+  googleMapsLink: string
+  address: string
+}
+
 interface FortDetails {
   builtBy: string
   constructionPeriod: string
@@ -35,19 +44,22 @@ interface FortDetails {
   features?: string[]
 }
 
+interface Fort {
+  id: string
+  name: string
+  region: string
+  yearBuilt: string
+  garrison: string
+  description: string
+  significance: string
+  image: string
+  images?: string[]
+  location: FortLocation
+  fullHistory: FortDetails
+}
+
 interface FortDetailsPageProps {
-  fort: {
-    id: string
-    name: string
-    region: string
-    yearBuilt: string
-    garrison: string
-    description: string
-    significance: string
-    image: string
-    images?: string[]
-    fullHistory: FortDetails
-  }
+  fort: Fort
 }
 
 // Reusable components
@@ -269,6 +281,37 @@ const WarriorsCarousel = ({
             onNavigate={onWarriorNavigate}
           />
         ))}
+      </div>
+    </motion.div>
+  )
+}
+
+const LocationMap = ({ fort }: { fort: Fort }) => {
+  const embedUrl = `https://maps.google.com/maps?q=${fort.location.latitude},${fort.location.longitude}&z=15&output=embed`
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.8 }}
+      className="location-map-section"
+    >
+      <div className="map-header">
+        <Map className="map-icon" size={20} />
+        <h4>Location Map</h4>
+      </div>
+      
+      <div className="map-container">
+        <iframe
+          src={embedUrl}
+          width="100%"
+          height="300"
+          style={{ border: 0, borderRadius: '8px' }}
+          allowFullScreen
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+          title={`Location of ${fort.name}`}
+        />
       </div>
     </motion.div>
   )
@@ -512,6 +555,27 @@ export default function FortDetailsPage({ fort }: FortDetailsPageProps) {
                 <div className="visitor-item">
                   <strong>Entry Fee:</strong> Nominal charges apply
                 </div>
+              </div>
+            </div>
+
+            {/* Location Section */}
+            <div className="detail-section">
+              <h3>Location & Directions</h3>
+              <div className="location-info">
+              
+                
+                {/* Interactive Map - Always Visible */}
+                <LocationMap fort={fort} />
+                
+                <a 
+                  href={fort.location.googleMapsLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="google-maps-button"
+                >
+                  <span>Open in Google Maps</span>
+                  <ExternalLink size={16} />
+                </a>
               </div>
             </div>
           </motion.div>
