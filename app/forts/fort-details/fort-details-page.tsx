@@ -1,12 +1,28 @@
 "use client"
 
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
 import { useRouter } from "next/navigation"
-import { ArrowLeft, MapPin, Calendar, Users, Shield, Clock, Navigation, Star, X, ChevronLeft, ChevronRight, Grid3X3, Sword, ChevronRightIcon } from "lucide-react"
-import { useState, useRef } from "react"
+import { 
+  ArrowLeft, 
+  MapPin, 
+  Calendar, 
+  Users, 
+  Shield, 
+  Clock, 
+  Navigation, 
+  Star, 
+  X, 
+  ChevronLeft, 
+  ChevronRight, 
+  Grid3X3,
+  Sword,
+  ChevronRightIcon
+} from "lucide-react"
+import { useState, useRef, useCallback, useMemo } from "react"
 import "../../../styles/forts-details.css"
-import { warriors } from "../../warriors/warriors"
+import { warriors } from "@/app/warriors/warriors"
 
+// Types
 interface FortDetails {
   builtBy: string
   constructionPeriod: string
@@ -34,59 +50,269 @@ interface FortDetailsPageProps {
   }
 }
 
+// Reusable components
+const InfoItem = ({ icon: Icon, label, value }: { 
+  icon: React.ComponentType<any>, 
+  label: string, 
+  value: string 
+}) => (
+  <div className="info-item">
+    <Icon className="info-icon" />
+    <div>
+      <span className="info-label">{label}</span>
+      <span className="info-value">{value}</span>
+    </div>
+  </div>
+)
+
+const ImageModal = ({ 
+  isOpen, 
+  onClose, 
+  images, 
+  currentIndex, 
+  onNext, 
+  onPrev,
+  fortName 
+}: {
+  isOpen: boolean
+  onClose: () => void
+  images: string[]
+  currentIndex: number
+  onNext: () => void
+  onPrev: () => void
+  fortName: string
+}) => (
+  <AnimatePresence>
+    {isOpen && (
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className="image-modal"
+        onClick={onClose}
+      >
+        <button className="modal-close" onClick={onClose}>
+          <X size={24} />
+        </button>
+        
+        <button className="modal-nav modal-nav-prev" onClick={(e) => { e.stopPropagation(); onPrev(); }}>
+          <ChevronLeft size={32} />
+        </button>
+        
+        <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+          <img 
+            src={images[currentIndex]} 
+            alt={`${fortName} view ${currentIndex + 1}`}
+            loading="eager"
+          />
+          <div className="image-counter">
+            {currentIndex + 1} / {images.length}
+          </div>
+        </div>
+        
+        <button className="modal-nav modal-nav-next" onClick={(e) => { e.stopPropagation(); onNext(); }}>
+          <ChevronRight size={32} />
+        </button>
+      </motion.div>
+    )}
+  </AnimatePresence>
+)
+
+const WarriorCard = ({ 
+  warrior, 
+  onNavigate 
+}: { 
+  warrior: any, 
+  onNavigate: (id: string) => void 
+}) => (
+  <motion.div
+    initial={{ opacity: 0, scale: 0.9 }}
+    animate={{ opacity: 1, scale: 1 }}
+    className="warrior-card"
+    onClick={() => onNavigate(warrior.id)}
+  >
+    <img 
+      src={warrior.image} 
+      alt={warrior.name}
+      className="warrior-image"
+    />
+    <div className="warrior-content">
+      <h3 className="warrior-name">{warrior.name}</h3>
+      <p className="warrior-title">{warrior.title}</p>
+      <p className="warrior-era">{warrior.era}</p>
+      
+      <div className="warrior-badges">
+        <span className="warrior-badge">{warrior.servicePeriod}</span>
+        <span className="warrior-badge">{warrior.fullHistory.rank}</span>
+      </div>
+      
+      <p className="warrior-description">
+        {warrior.description.length > 120 
+          ? warrior.description.substring(0, 120) + '...'
+          : warrior.description
+        }
+      </p>
+      
+      <div className="warrior-stats">
+        <div className="stat">
+          <span className="stat-label">Battles</span>
+          <span className="stat-value">{warrior.fullHistory.battles.length}</span>
+        </div>
+        <div className="stat">
+          <span className="stat-label">Achievements</span>
+          <span className="stat-value">{warrior.fullHistory.achievements.length}</span>
+        </div>
+      </div>
+      
+      <div className="warrior-card-footer">
+        <button 
+          className="view-profile-btn"
+          onClick={(e) => {
+            e.stopPropagation();
+            onNavigate(warrior.id);
+          }}
+        >
+          View Profile <ChevronRightIcon size={16} />
+        </button>
+        <div className="weapon-count">
+          <Sword size={14} />
+          {warrior.fullHistory.weapons.length} weapons
+        </div>
+      </div>
+    </div>
+  </motion.div>
+)
+
+const WarriorsCarousel = ({ 
+  warriors, 
+  fortName,
+  onWarriorNavigate 
+}: { 
+  warriors: any[], 
+  fortName: string,
+  onWarriorNavigate: (id: string) => void 
+}) => {
+  const carouselRef = useRef<HTMLDivElement>(null)
+
+  const scrollLeft = useCallback(() => {
+    if (carouselRef.current) {
+      const scrollAmount = carouselRef.current.offsetWidth * 0.8
+      carouselRef.current.scrollBy({ 
+        left: -scrollAmount, 
+        behavior: 'smooth' 
+      })
+    }
+  }, [])
+
+  const scrollRight = useCallback(() => {
+    if (carouselRef.current) {
+      const scrollAmount = carouselRef.current.offsetWidth * 0.8
+      carouselRef.current.scrollBy({ 
+        left: scrollAmount, 
+        behavior: 'smooth' 
+      })
+    }
+  }, [])
+
+  if (warriors.length === 0) {
+    return (
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.6 }}
+        className="warriors-section"
+      >
+        <div className="no-warriors">
+          <Sword className="no-warriors-icon" size={48} />
+          <h3>No Warriors Associated</h3>
+          <p>There are no recorded warriors specifically associated with {fortName}.</p>
+        </div>
+      </motion.div>
+    )
+  }
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.6 }}
+      className="warriors-section"
+    >
+      <div className="warriors-header">
+        <h2 className="warriors-title">
+          <Sword className="sword-icon" size={32} />
+          Legendary Warriors of {fortName}
+        </h2>
+        <div className="warriors-nav">
+          <button 
+            className="nav-button" 
+            onClick={scrollLeft}
+            aria-label="Scroll left"
+          >
+            <ChevronLeft size={20} />
+          </button>
+          <button 
+            className="nav-button" 
+            onClick={scrollRight}
+            aria-label="Scroll right"
+          >
+            <ChevronRight size={20} />
+          </button>
+        </div>
+      </div>
+
+      <div className="warriors-carousel" ref={carouselRef}>
+        {warriors.map((warrior, index) => (
+          <WarriorCard
+            key={warrior.id}
+            warrior={warrior}
+            onNavigate={onWarriorNavigate}
+          />
+        ))}
+      </div>
+    </motion.div>
+  )
+}
+
 export default function FortDetailsPage({ fort }: FortDetailsPageProps) {
   const router = useRouter()
   const [selectedImage, setSelectedImage] = useState<number | null>(null)
   const [showAllImages, setShowAllImages] = useState(false)
-  const warriorsCarouselRef = useRef<HTMLDivElement>(null)
   
-  // Use the main image plus additional images if available
-  const allImages = [fort.image, ...(fort.images || [])]
-  
-  // Show only first 6 images initially, or all if showAllImages is true
-  const displayedImages = showAllImages ? allImages : allImages.slice(0, 6)
+  // Memoized values
+  const allImages = useMemo(() => [fort.image, ...(fort.images || [])], [fort.image, fort.images])
+  const displayedImages = useMemo(() => 
+    showAllImages ? allImages : allImages.slice(0, 6), 
+    [showAllImages, allImages]
+  )
   const hasMoreImages = allImages.length > 6
 
-  // Get warriors related to this fort
-  const relatedWarriors = warriors.filter(warrior => 
-    warrior.relatedForts.includes(fort.id)
+  // Get related warriors
+  const relatedWarriors = useMemo(() => 
+    warriors.filter(warrior => warrior.relatedForts.includes(fort.id)),
+    [fort.id]
   )
 
-  const nextImage = () => {
-    if (selectedImage !== null) {
-      setSelectedImage((selectedImage + 1) % allImages.length)
-    }
-  }
+  // Event handlers
+  const navigateBack = useCallback(() => router.back(), [router])
+  
+  const nextImage = useCallback(() => {
+    setSelectedImage(prev => prev !== null ? (prev + 1) % allImages.length : null)
+  }, [allImages.length])
 
-  const prevImage = () => {
-    if (selectedImage !== null) {
-      setSelectedImage((selectedImage - 1 + allImages.length) % allImages.length)
-    }
-  }
+  const prevImage = useCallback(() => {
+    setSelectedImage(prev => prev !== null ? (prev - 1 + allImages.length) % allImages.length : null)
+  }, [allImages.length])
 
-  const closeModal = () => {
-    setSelectedImage(null)
-  }
+  const closeModal = useCallback(() => setSelectedImage(null), [])
+  
+  const openImage = useCallback((index: number) => setSelectedImage(index), [])
+  
+  const toggleShowAllImages = useCallback(() => setShowAllImages(prev => !prev), [])
 
-  const toggleShowAllImages = () => {
-    setShowAllImages(!showAllImages)
-  }
-
-  const navigateToWarrior = (warriorId: string) => {
+  const navigateToWarrior = useCallback((warriorId: string) => {
     router.push(`/warriors/${warriorId}`)
-  }
-
-  const scrollWarriorsLeft = () => {
-    if (warriorsCarouselRef.current) {
-      warriorsCarouselRef.current.scrollBy({ left: -300, behavior: 'smooth' })
-    }
-  }
-
-  const scrollWarriorsRight = () => {
-    if (warriorsCarouselRef.current) {
-      warriorsCarouselRef.current.scrollBy({ left: 300, behavior: 'smooth' })
-    }
-  }
+  }, [router])
 
   return (
     <div className="fort-details-page">
@@ -94,7 +320,7 @@ export default function FortDetailsPage({ fort }: FortDetailsPageProps) {
       <motion.button
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        onClick={() => router.back()}
+        onClick={navigateBack}
         className="back-button"
       >
         <ArrowLeft size={20} />
@@ -109,7 +335,13 @@ export default function FortDetailsPage({ fort }: FortDetailsPageProps) {
         className="fort-hero"
       >
         <div className="fort-hero-image">
-          <img src={fort.image} alt={fort.name} />
+          <img 
+            src={fort.image} 
+            alt={fort.name} 
+            loading="eager"
+            width={1200}
+            height={600}
+          />
           <div className="fort-hero-overlay">
             <h1 className="fort-hero-title">{fort.name}</h1>
             <p className="fort-hero-subtitle">{fort.region}</p>
@@ -134,48 +366,12 @@ export default function FortDetailsPage({ fort }: FortDetailsPageProps) {
             <div className="info-card">
               <h3>Fort Information</h3>
               <div className="info-grid">
-                <div className="info-item">
-                  <MapPin className="info-icon" />
-                  <div>
-                    <span className="info-label">Region</span>
-                    <span className="info-value">{fort.region}</span>
-                  </div>
-                </div>
-                <div className="info-item">
-                  <Calendar className="info-icon" />
-                  <div>
-                    <span className="info-label">Year Built/Captured</span>
-                    <span className="info-value">{fort.yearBuilt}</span>
-                  </div>
-                </div>
-                <div className="info-item">
-                  <Users className="info-icon" />
-                  <div>
-                    <span className="info-label">Peak Garrison</span>
-                    <span className="info-value">{fort.garrison}</span>
-                  </div>
-                </div>
-                <div className="info-item">
-                  <Shield className="info-icon" />
-                  <div>
-                    <span className="info-label">Built By</span>
-                    <span className="info-value">{fort.fullHistory.builtBy}</span>
-                  </div>
-                </div>
-                <div className="info-item">
-                  <Clock className="info-icon" />
-                  <div>
-                    <span className="info-label">Construction Period</span>
-                    <span className="info-value">{fort.fullHistory.constructionPeriod}</span>
-                  </div>
-                </div>
-                <div className="info-item">
-                  <Navigation className="info-icon" />
-                  <div>
-                    <span className="info-label">Area</span>
-                    <span className="info-value">{fort.fullHistory.area}</span>
-                  </div>
-                </div>
+                <InfoItem icon={MapPin} label="Region" value={fort.region} />
+                <InfoItem icon={Calendar} label="Year Built/Captured" value={fort.yearBuilt} />
+                <InfoItem icon={Users} label="Peak Garrison" value={fort.garrison} />
+                <InfoItem icon={Shield} label="Built By" value={fort.fullHistory.builtBy} />
+                <InfoItem icon={Clock} label="Construction Period" value={fort.fullHistory.constructionPeriod} />
+                <InfoItem icon={Navigation} label="Area" value={fort.fullHistory.area} />
               </div>
             </div>
 
@@ -184,9 +380,7 @@ export default function FortDetailsPage({ fort }: FortDetailsPageProps) {
               <div className="info-card">
                 <div className="gallery-header">
                   <h3>Gallery</h3>
-                  <span className="image-count">
-                    {allImages.length} photos
-                  </span>
+                  <span className="image-count">{allImages.length} photos</span>
                 </div>
                 <div className="image-gallery">
                   {displayedImages.map((image, index) => (
@@ -196,16 +390,21 @@ export default function FortDetailsPage({ fort }: FortDetailsPageProps) {
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ delay: 0.4 + index * 0.1 }}
                       className="gallery-item"
-                      onClick={() => setSelectedImage(index)}
+                      onClick={() => openImage(index)}
                     >
-                      <img src={image} alt={`${fort.name} view ${index + 1}`} />
+                      <img 
+                        src={image} 
+                        alt={`${fort.name} view ${index + 1}`}
+                        loading="lazy"
+                        width={200}
+                        height={150}
+                      />
                       <div className="gallery-overlay">
                         <span className="view-text">View</span>
                       </div>
                     </motion.div>
                   ))}
                   
-                  {/* View More Button */}
                   {hasMoreImages && !showAllImages && (
                     <motion.div
                       initial={{ opacity: 0, scale: 0.8 }}
@@ -222,7 +421,6 @@ export default function FortDetailsPage({ fort }: FortDetailsPageProps) {
                   )}
                 </div>
                 
-                {/* Show Less Button */}
                 {showAllImages && hasMoreImages && (
                   <motion.button
                     initial={{ opacity: 0 }}
@@ -236,7 +434,7 @@ export default function FortDetailsPage({ fort }: FortDetailsPageProps) {
               </div>
             )}
 
-            {/* Architecture Info */}
+            {/* Architecture & Features */}
             <div className="info-card">
               <h3>Architecture Style</h3>
               <p className="architecture-description">{fort.fullHistory.architecture}</p>
@@ -248,8 +446,7 @@ export default function FortDetailsPage({ fort }: FortDetailsPageProps) {
               )}
             </div>
 
-            {/* Features */}
-            {fort.fullHistory.features && (
+            {fort.fullHistory.features && fort.fullHistory.features.length > 0 && (
               <div className="info-card">
                 <h3>Key Features</h3>
                 <ul className="features-list">
@@ -270,19 +467,16 @@ export default function FortDetailsPage({ fort }: FortDetailsPageProps) {
             transition={{ delay: 0.3 }}
             className="fort-detailed-info"
           >
-            {/* Description */}
             <div className="detail-section">
               <h2>About {fort.name}</h2>
               <p className="fort-full-description">{fort.description}</p>
             </div>
 
-            {/* Historical Significance */}
             <div className="detail-section">
               <h3>Historical Significance</h3>
               <p className="significance-text">{fort.significance}</p>
             </div>
 
-            {/* Major Events */}
             <div className="detail-section">
               <h3>Major Historical Events</h3>
               <ul className="events-list">
@@ -301,23 +495,11 @@ export default function FortDetailsPage({ fort }: FortDetailsPageProps) {
               </ul>
             </div>
 
-            {/* Current Status */}
             <div className="detail-section">
               <h3>Current Status</h3>
-              <p className="status-description">
-               {fort.fullHistory.currentStatus}
-              </p>
+              <p className="status-description">{fort.fullHistory.currentStatus}</p>
             </div>
 
-
-            <div className="crousel">
-
-              
-
-            </div>
-
-
-            {/* Visitor Information */}
             <div className="detail-section">
               <h3>Visitor Information</h3>
               <div className="visitor-info">
@@ -334,40 +516,25 @@ export default function FortDetailsPage({ fort }: FortDetailsPageProps) {
             </div>
           </motion.div>
         </div>
+
+        {/* Warriors Carousel Section */}
+        <WarriorsCarousel 
+          warriors={relatedWarriors}
+          fortName={fort.name}
+          onWarriorNavigate={navigateToWarrior}
+        />
       </div>
 
       {/* Image Modal */}
-      {selectedImage !== null && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          className="image-modal"
-          onClick={closeModal}
-        >
-          <button className="modal-close" onClick={closeModal}>
-            <X size={24} />
-          </button>
-          
-          <button className="modal-nav modal-nav-prev" onClick={(e) => { e.stopPropagation(); prevImage(); }}>
-            <ChevronLeft size={32} />
-          </button>
-          
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <img 
-              src={allImages[selectedImage]} 
-              alt={`${fort.name} view ${selectedImage + 1}`}
-            />
-            <div className="image-counter">
-              {selectedImage + 1} / {allImages.length}
-            </div>
-          </div>
-          
-          <button className="modal-nav modal-nav-next" onClick={(e) => { e.stopPropagation(); nextImage(); }}>
-            <ChevronRight size={32} />
-          </button>
-        </motion.div>
-      )}
+      <ImageModal
+        isOpen={selectedImage !== null}
+        onClose={closeModal}
+        images={allImages}
+        currentIndex={selectedImage || 0}
+        onNext={nextImage}
+        onPrev={prevImage}
+        fortName={fort.name}
+      />
     </div>
   )
-} 
+}

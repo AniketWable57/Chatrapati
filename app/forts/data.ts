@@ -51,7 +51,11 @@ export const forts = [
         "Holi Cha Mal (Royal Bath)",
         "Rani Vasa (Queen's Quarters)",
         "Marketplace and Administrative buildings"
-      ]
+      ],
+      location: {
+        mapsLink: "https://maps.google.com/?q=Raigad+Fort",
+        coordinates: "18.2345° N, 73.4456° E"
+    }
     }
   },
   {
